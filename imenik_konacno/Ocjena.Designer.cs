@@ -1,6 +1,6 @@
 ﻿namespace Forme
 {
-    partial class Ocjena
+    partial class FrmOcjena
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblDatum = new System.Windows.Forms.Label();
+            this.lblOcjena = new System.Windows.Forms.Label();
+            this.lblNapomena = new System.Windows.Forms.Label();
+            this.txtOcjena = new System.Windows.Forms.TextBox();
+            this.txtNapomena = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -44,70 +43,60 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 0;
             // 
-            // label1
+            // lblDatum
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Datum:";
+            this.lblDatum.AutoSize = true;
+            this.lblDatum.Location = new System.Drawing.Point(25, 18);
+            this.lblDatum.Name = "lblDatum";
+            this.lblDatum.Size = new System.Drawing.Size(41, 13);
+            this.lblDatum.TabIndex = 1;
+            this.lblDatum.Text = "Datum:";
             // 
-            // label2
+            // lblOcjena
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Ocjena:";
+            this.lblOcjena.AutoSize = true;
+            this.lblOcjena.Location = new System.Drawing.Point(25, 47);
+            this.lblOcjena.Name = "lblOcjena";
+            this.lblOcjena.Size = new System.Drawing.Size(44, 13);
+            this.lblOcjena.TabIndex = 2;
+            this.lblOcjena.Text = "Ocjena:";
             // 
-            // label3
+            // lblNapomena
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Napomena:";
+            this.lblNapomena.AutoSize = true;
+            this.lblNapomena.Location = new System.Drawing.Point(7, 74);
+            this.lblNapomena.Name = "lblNapomena";
+            this.lblNapomena.Size = new System.Drawing.Size(62, 13);
+            this.lblNapomena.TabIndex = 3;
+            this.lblNapomena.Text = "Napomena:";
             // 
-            // textBox1
+            // txtOcjena
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(30, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtOcjena.Location = new System.Drawing.Point(78, 47);
+            this.txtOcjena.Name = "txtOcjena";
+            this.txtOcjena.Size = new System.Drawing.Size(30, 20);
+            this.txtOcjena.TabIndex = 4;
             // 
-            // textBox2
+            // txtNapomena
             // 
-            this.textBox2.Location = new System.Drawing.Point(78, 74);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 69);
-            this.textBox2.TabIndex = 5;
+            this.txtNapomena.Location = new System.Drawing.Point(78, 74);
+            this.txtNapomena.Multiline = true;
+            this.txtNapomena.Name = "txtNapomena";
+            this.txtNapomena.Size = new System.Drawing.Size(200, 69);
+            this.txtNapomena.TabIndex = 5;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(203, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Spremi";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // Ocjena
+            // FrmOcjena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 200);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(300, 166);
+            this.Controls.Add(this.txtNapomena);
+            this.Controls.Add(this.txtOcjena);
+            this.Controls.Add(this.lblNapomena);
+            this.Controls.Add(this.lblOcjena);
+            this.Controls.Add(this.lblDatum);
             this.Controls.Add(this.dateTimePicker1);
-            this.Name = "Ocjena";
+            this.Name = "FrmOcjena";
             this.Text = "Ocjena";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -117,11 +106,10 @@
         #endregion
 
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblDatum;
+        private System.Windows.Forms.Label lblOcjena;
+        private System.Windows.Forms.Label lblNapomena;
+        private System.Windows.Forms.TextBox txtOcjena;
+        private System.Windows.Forms.TextBox txtNapomena;
     }
 }
