@@ -1,0 +1,3 @@
+C:\Users\Nikolina\Documents\Visual Studio 2012\Projects\Forme\Forme\bin\Debug\Forme.exe.config
+C:\Users\Nikolina\Documents\Visual Studio 2012\Projects\Forme\Forme\obj\Debug\Forme.exe
+C:\Users\Nikolina\Documents\Visual Studio 2012\Projects\Forme\Forme\obj\Debug\Forme.pdb
