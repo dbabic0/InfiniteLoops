@@ -1,0 +1,18 @@
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\bin\Debug\Forme.exe.config
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\bin\Debug\Forme.exe
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\bin\Debug\Forme.pdb
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.csprojResolveAssemblyReference.cache
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.Properties.Resources.resources
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.csproj.GenerateResource.Cache
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.exe
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.pdb
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.FrmPrijava.resources
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.EvidencijaSata.resources
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.IzbornikRazrednika.resources
+c:\users\nikolina\documents\visual studio 2012\Projects\Forme\Forme\obj\Debug\Forme.OdabirUloge.resources
+C:\Users\Maja\Desktop\nina\bin\Debug\Forme.exe.config
+C:\Users\Maja\Desktop\nina\obj\Debug\Forme.exe
+C:\Users\Maja\Desktop\nina\obj\Debug\Forme.pdb
+C:\Users\Nikolina\Desktop\nina\bin\Debug\Forme.exe.config
+C:\Users\Nikolina\Desktop\nina\obj\Debug\Forme.exe
+C:\Users\Nikolina\Desktop\nina\obj\Debug\Forme.pdb
