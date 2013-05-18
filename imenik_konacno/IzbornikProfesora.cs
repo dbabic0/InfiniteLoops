@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Forme
 {
-    public partial class ProfilUcenika : Form
+    public partial class IzbornikProfesora : Form
     {
-        public ProfilUcenika()
+        public IzbornikProfesora()
         {
             InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

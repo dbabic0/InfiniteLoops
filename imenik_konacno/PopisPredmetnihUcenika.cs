@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace Forme
 {
-    public partial class ProfilUcenika : Form
+    public partial class PopisPredmetnihUcenika : Form
     {
-        public ProfilUcenika()
+        public PopisPredmetnihUcenika()
         {
             InitializeComponent();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
