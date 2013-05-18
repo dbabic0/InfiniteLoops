@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Forme
 {
-    public partial class Ocjena : Form
+    public partial class FrmOcjena : Form
     {
-        public Ocjena()
+        public FrmOcjena()
         {
             InitializeComponent();
         }
