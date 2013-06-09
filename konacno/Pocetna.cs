@@ -15,6 +15,13 @@ namespace Forme
         public Pocetna()
         {
             InitializeComponent();
+            this.CenterToParent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmPrijava prijava = new FrmPrijava();
+            prijava.ShowDialog();
         }
     }
 }

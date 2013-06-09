@@ -15,6 +15,7 @@ namespace Forme
         public OdabirUloge()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
     }
 }

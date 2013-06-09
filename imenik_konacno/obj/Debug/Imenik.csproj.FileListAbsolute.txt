@@ -7,3 +7,6 @@ C:\Users\Nikolina\Documents\GitHub\InfiniteLoops\Forme\obj\Debug\Forme.pdb
 C:\Users\Maja\Desktop\maja\bin\Debug\Forme.exe.config
 C:\Users\Maja\Desktop\maja\obj\Debug\Forme.exe
 C:\Users\Maja\Desktop\maja\obj\Debug\Forme.pdb
+C:\Users\Dajana\Documents\GitHub\InfiniteLoops\imenik_konacno\bin\Debug\Forme.exe.config
+C:\Users\Dajana\Documents\GitHub\InfiniteLoops\imenik_konacno\obj\Debug\Forme.exe
+C:\Users\Dajana\Documents\GitHub\InfiniteLoops\imenik_konacno\obj\Debug\Forme.pdb

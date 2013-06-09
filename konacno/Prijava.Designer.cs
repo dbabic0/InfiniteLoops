@@ -77,6 +77,7 @@
             this.btnIzlaz.TabIndex = 4;
             this.btnIzlaz.Text = "Izlaz";
             this.btnIzlaz.UseVisualStyleBackColor = true;
+            this.btnIzlaz.Click += new System.EventHandler(this.btnIzlaz_Click);
             // 
             // btnPrijava
             // 
@@ -86,6 +87,7 @@
             this.btnPrijava.TabIndex = 5;
             this.btnPrijava.Text = "Prijava";
             this.btnPrijava.UseVisualStyleBackColor = true;
+            this.btnPrijava.Click += new System.EventHandler(this.btnPrijava_Click);
             // 
             // FrmPrijava
             // 
