@@ -13,6 +13,33 @@ namespace Forme
 {
     public partial class FrmPrijava : Form
     {
+
+        private static string korisnicko_ime;
+        private static string lozinka;
+        private static string ime;
+        private static string prezime;
+
+        public static string Korisnicko_ime
+        {
+            get{return korisnicko_ime;}
+            set{korisnicko_ime=value;}
+        }
+        public static string Lozinka
+        {
+            get { return lozinka; }
+            set { lozinka = value; }
+        }
+        public static string Ime
+        {
+            get { return ime; }
+            set { ime = value; }
+        }
+        public static string Prezime
+        {
+            get { return prezime;}
+            set { prezime = value; }
+        }
+
         public FrmPrijava()
         {
             InitializeComponent();
@@ -42,12 +69,24 @@ namespace Forme
             }
             else
             {
-                string sql = "SELECT korisnicko_ime,lozinka from \"Korisnik\" WHERE korisnicko_ime='" + txtKorIme.Text + "' AND lozinka='" + txtLozinka.Text + "';";
+                string sql = "SELECT korisnicko_ime,lozinka,ime,prezime from \"Korisnik\" WHERE korisnicko_ime='" + txtKorIme.Text + "' AND lozinka='" + txtLozinka.Text + "';";
                 NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
-                if (citac.HasRows == true)
+                if (citac.HasRows)
                 {
-                    //MessageBox.Show("Uspješna prijava!");
+                    MessageBox.Show("Uspješna prijava!");
+                    
+                    
+                    Korisnicko_ime = txtKorIme.Text;
+                    Lozinka = txtLozinka.Text;
+                    while (citac.Read())
+                    {
+                        
+                        Ime = citac["ime"].ToString();
+                        Prezime = citac["prezime"].ToString();
+                    }
                     this.Hide();
+                    citac.Close();
+
                     OdabirUloge odabiruloge = new OdabirUloge();
                     odabiruloge.ShowDialog();
                     this.Close();
@@ -55,6 +94,7 @@ namespace Forme
                 else
                 {
                     MessageBox.Show("Neuspješna prijava!");
+                    citac.Close();
                 }
 
             }

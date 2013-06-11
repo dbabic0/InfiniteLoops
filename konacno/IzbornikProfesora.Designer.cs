@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtImePrezime = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -82,19 +82,19 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Ime i prezime profesora";
             // 
-            // textBox1
+            // txtImePrezime
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtImePrezime.Location = new System.Drawing.Point(4, 40);
+            this.txtImePrezime.Name = "txtImePrezime";
+            this.txtImePrezime.Size = new System.Drawing.Size(135, 20);
+            this.txtImePrezime.TabIndex = 5;
             // 
             // IzbornikProfesora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 157);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
@@ -114,6 +114,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtImePrezime;
     }
 }

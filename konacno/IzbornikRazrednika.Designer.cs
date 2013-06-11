@@ -32,7 +32,7 @@
             this.btnPopisUcenika = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtImePrezime = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -73,12 +73,12 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Ime i prezime razrednika";
             // 
-            // textBox1
+            // txtImePrezime
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtImePrezime.Location = new System.Drawing.Point(15, 30);
+            this.txtImePrezime.Name = "txtImePrezime";
+            this.txtImePrezime.Size = new System.Drawing.Size(159, 20);
+            this.txtImePrezime.TabIndex = 4;
             // 
             // dateTimePicker1
             // 
@@ -103,7 +103,7 @@
             this.ClientSize = new System.Drawing.Size(482, 173);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnPopisUcenika);
@@ -121,7 +121,7 @@
         private System.Windows.Forms.Button btnPopisUcenika;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtImePrezime;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
     }

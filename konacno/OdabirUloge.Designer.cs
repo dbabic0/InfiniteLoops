@@ -41,6 +41,7 @@
             this.btnRazrednik.TabIndex = 0;
             this.btnRazrednik.Text = "Razrednik";
             this.btnRazrednik.UseVisualStyleBackColor = true;
+            this.btnRazrednik.Click += new System.EventHandler(this.btnRazrednik_Click);
             // 
             // btnProfesor
             // 
@@ -50,6 +51,7 @@
             this.btnProfesor.TabIndex = 1;
             this.btnProfesor.Text = "Profesor";
             this.btnProfesor.UseVisualStyleBackColor = true;
+            this.btnProfesor.Click += new System.EventHandler(this.btnProfesor_Click);
             // 
             // btnOdjava
             // 
@@ -59,6 +61,7 @@
             this.btnOdjava.TabIndex = 2;
             this.btnOdjava.Text = "Odjava";
             this.btnOdjava.UseVisualStyleBackColor = true;
+            this.btnOdjava.Click += new System.EventHandler(this.btnOdjava_Click);
             // 
             // OdabirUloge
             // 
@@ -70,6 +73,7 @@
             this.Controls.Add(this.btnRazrednik);
             this.Name = "OdabirUloge";
             this.Text = "Uloga";
+            this.Load += new System.EventHandler(this.OdabirUloge_Load);
             this.ResumeLayout(false);
 
         }
