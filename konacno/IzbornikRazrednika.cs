@@ -17,14 +17,59 @@ namespace Forme
         {
             InitializeComponent();
             this.CenterToParent();
-            //string sql = "SELECT ime, prezime FROM \"Korisnik\" WHERE korisnicko_ime='" + Login.korisnicko_ime + "' AND lozinka='" + Login.lozinka + "';";
-            //NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
-            //while (citac.Read())
-            //{
-            //    txtImePrezime.Text = citac["ime"] + " " + citac["prezime"];
-            //}
-            //citac.Close();
+            string sql = "SELECT naziv_razreda FROM \"Razred\" WHERE \"ID_korisnik\"='" + FrmPrijava.Id_korisnika + "';";
+            NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            try
+            {
+
+                while (citac.Read())
+                {
+                    cmbPredmeti.Items.Add(citac["naziv_razreda"].ToString());
+                }
+                cmbPredmeti.SelectedIndex = 0;
+
+            }
+
+            catch
+            {
+                MessageBox.Show("Niste nikome razrednik!");
+            }
+            citac.Close();
+
+     
             txtImePrezime.Text = FrmPrijava.Ime + " " + FrmPrijava.Prezime;
+        }
+
+        private void cmbPredmet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OdabirUloge odabiruloge = new OdabirUloge();
+            this.Hide();
+            odabiruloge.ShowDialog();
+            this.Close();
+
+        }
+
+        private void btnEvidencijaSata_Click(object sender, EventArgs e)
+        {
+            EvidencijaSata evidencijasata = new EvidencijaSata();
+            this.Hide();
+            evidencijasata.ShowDialog();
+            this.Show();
+        }
+
+        private void btnPopisUcenika_Click(object sender, EventArgs e)
+        {
+            PopisUcenika popisucenika = new PopisUcenika();
+            this.Hide();
+
+            popisucenika.ShowDialog();
+            this.Show();
+
         }
     }
 }

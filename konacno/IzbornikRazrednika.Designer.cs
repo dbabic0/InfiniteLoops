@@ -35,6 +35,7 @@
             this.txtImePrezime = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbPredmeti = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnEvidencijaSata
@@ -45,6 +46,7 @@
             this.btnEvidencijaSata.TabIndex = 0;
             this.btnEvidencijaSata.Text = "Evidencija sata";
             this.btnEvidencijaSata.UseVisualStyleBackColor = true;
+            this.btnEvidencijaSata.Click += new System.EventHandler(this.btnEvidencijaSata_Click);
             // 
             // btnPopisUcenika
             // 
@@ -54,6 +56,7 @@
             this.btnPopisUcenika.TabIndex = 1;
             this.btnPopisUcenika.Text = "Popis učenika";
             this.btnPopisUcenika.UseVisualStyleBackColor = true;
+            this.btnPopisUcenika.Click += new System.EventHandler(this.btnPopisUcenika_Click);
             // 
             // button3
             // 
@@ -63,6 +66,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Odabir uloge";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -96,11 +100,21 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Datum";
             // 
+            // cmbPredmeti
+            // 
+            this.cmbPredmeti.FormattingEnabled = true;
+            this.cmbPredmeti.Location = new System.Drawing.Point(170, 56);
+            this.cmbPredmeti.Name = "cmbPredmeti";
+            this.cmbPredmeti.Size = new System.Drawing.Size(121, 21);
+            this.cmbPredmeti.TabIndex = 7;
+            this.cmbPredmeti.SelectedIndexChanged += new System.EventHandler(this.cmbPredmet_SelectedIndexChanged);
+            // 
             // IzbornikRazrednika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 173);
+            this.Controls.Add(this.cmbPredmeti);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtImePrezime);
@@ -124,5 +138,6 @@
         private System.Windows.Forms.TextBox txtImePrezime;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbPredmeti;
     }
 }

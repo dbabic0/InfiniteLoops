@@ -18,6 +18,13 @@ namespace Forme
         private static string lozinka;
         private static string ime;
         private static string prezime;
+        private static string id_korisnika;
+
+        public static string Id_korisnika
+        {
+            get { return id_korisnika;}
+            set{id_korisnika=value;}
+        }
 
         public static string Korisnicko_ime
         {
@@ -69,7 +76,7 @@ namespace Forme
             }
             else
             {
-                string sql = "SELECT korisnicko_ime,lozinka,ime,prezime from \"Korisnik\" WHERE korisnicko_ime='" + txtKorIme.Text + "' AND lozinka='" + txtLozinka.Text + "';";
+                string sql = "SELECT \"ID_korisnik\",korisnicko_ime,lozinka,ime,prezime FROM \"Korisnik\" WHERE korisnicko_ime='" + txtKorIme.Text + "' AND lozinka='" + txtLozinka.Text + "';";
                 NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
                 if (citac.HasRows)
                 {
@@ -83,6 +90,7 @@ namespace Forme
                         
                         Ime = citac["ime"].ToString();
                         Prezime = citac["prezime"].ToString();
+                        Id_korisnika = citac["ID_korisnik"].ToString();
                     }
                     this.Hide();
                     citac.Close();

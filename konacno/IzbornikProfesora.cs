@@ -17,19 +17,52 @@ namespace Forme
         {
             InitializeComponent();
             this.CenterToParent();
-            //string sql = "SELECT ime, prezime FROM \"Korisnik\" WHERE korisnicko_ime='" + Login.korisnicko_ime + "' AND lozinka='" + Login.lozinka + "';";
-            //NpgsqlDataReader citac= BazaPodataka.Instance.DohvatiDataReader(sql);
-            //while (citac.Read())
-            //{
-            //    txtImePrezime.Text = citac["ime"] + " " + citac["prezime"];
-            //}
-            //citac.Close();
+            string sql = "SELECT \"ID_predmet\" FROM \"Predaje\" WHERE \"Predaje\".\"ID_korisnik\"='" + FrmPrijava.Id_korisnika + "';";
+            NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            List<string> lista_id_jeva = new List<string>();
+            while (citac.Read())
+            {
+                lista_id_jeva.Add(citac["ID_predmet"].ToString());
+      
+            }
+
+            citac.Close();
+            foreach (string tekst in lista_id_jeva)
+            {
+                sql = "SELECT naziv_predmeta FROM \"Predmeti\" WHERE \"ID_predmet\" ='" + tekst + "';";
+                citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                while (citac.Read())
+                {
+                    cmbPopis.Items.Add(citac["naziv_predmeta"].ToString());
+
+                }
+                citac.Close();
+            }
+
+            cmbPopis.SelectedIndex = 0;
+
+
+
+
             txtImePrezime.Text = FrmPrijava.Ime + " " + FrmPrijava.Prezime;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (cmbPopis.Text == "")
+            {
 
+            }
+
+            else 
+            {
+                EvidencijaSata evidencijasata = new EvidencijaSata(cmbPopis.Text);
+                this.Hide();
+                evidencijasata.ShowDialog();
+                this.Show();
+
+
+            }
         }
     }
 }

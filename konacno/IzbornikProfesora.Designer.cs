@@ -34,6 +34,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txtImePrezime = new System.Windows.Forms.TextBox();
+            this.cmbPopis = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -89,11 +90,20 @@
             this.txtImePrezime.Size = new System.Drawing.Size(135, 20);
             this.txtImePrezime.TabIndex = 5;
             // 
+            // cmbPopis
+            // 
+            this.cmbPopis.FormattingEnabled = true;
+            this.cmbPopis.Location = new System.Drawing.Point(213, 38);
+            this.cmbPopis.Name = "cmbPopis";
+            this.cmbPopis.Size = new System.Drawing.Size(121, 21);
+            this.cmbPopis.TabIndex = 6;
+            // 
             // IzbornikProfesora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(476, 157);
+            this.Controls.Add(this.cmbPopis);
             this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
@@ -115,5 +125,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtImePrezime;
+        private System.Windows.Forms.ComboBox cmbPopis;
     }
 }
