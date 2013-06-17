@@ -102,6 +102,7 @@
             // 
             // cmbPredmeti
             // 
+            this.cmbPredmeti.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPredmeti.FormattingEnabled = true;
             this.cmbPredmeti.Location = new System.Drawing.Point(170, 56);
             this.cmbPredmeti.Name = "cmbPredmeti";

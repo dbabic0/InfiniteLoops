@@ -40,15 +40,21 @@
             this.lblSvi = new System.Windows.Forms.Label();
             this.lblIzostali = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnIzostao = new System.Windows.Forms.Button();
             this.btnNijeIzostao = new System.Windows.Forms.Button();
+            this.btnIzostao = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtIzostali = new System.Windows.Forms.TextBox();
+            this.txtPrisutni = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 81);
+            this.label1.Location = new System.Drawing.Point(6, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 0;
@@ -57,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(101, 116);
+            this.label2.Location = new System.Drawing.Point(50, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 1;
@@ -65,7 +71,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(176, 81);
+            this.textBox1.Location = new System.Drawing.Point(98, 42);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(176, 20);
             this.textBox1.TabIndex = 5;
@@ -73,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(97, 56);
+            this.label3.Location = new System.Drawing.Point(46, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 6;
@@ -81,7 +87,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(176, 116);
+            this.textBox2.Location = new System.Drawing.Point(98, 77);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(176, 185);
@@ -100,7 +106,7 @@
             // lblDatum
             // 
             this.lblDatum.AutoSize = true;
-            this.lblDatum.Location = new System.Drawing.Point(202, 56);
+            this.lblDatum.Location = new System.Drawing.Point(124, 17);
             this.lblDatum.Name = "lblDatum";
             this.lblDatum.Size = new System.Drawing.Size(35, 13);
             this.lblDatum.TabIndex = 10;
@@ -109,6 +115,7 @@
             // 
             // cmbPrisutni
             // 
+            this.cmbPrisutni.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrisutni.FormattingEnabled = true;
             this.cmbPrisutni.Location = new System.Drawing.Point(9, 48);
             this.cmbPrisutni.Name = "cmbPrisutni";
@@ -117,6 +124,7 @@
             // 
             // cmbIzostali
             // 
+            this.cmbIzostali.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIzostali.FormattingEnabled = true;
             this.cmbIzostali.Location = new System.Drawing.Point(9, 117);
             this.cmbIzostali.Name = "cmbIzostali";
@@ -157,15 +165,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Izostanci učenika";
             // 
-            // btnIzostao
-            // 
-            this.btnIzostao.Location = new System.Drawing.Point(417, 46);
-            this.btnIzostao.Name = "btnIzostao";
-            this.btnIzostao.Size = new System.Drawing.Size(75, 23);
-            this.btnIzostao.TabIndex = 15;
-            this.btnIzostao.Text = "Izostao";
-            this.btnIzostao.UseVisualStyleBackColor = true;
-            // 
             // btnNijeIzostao
             // 
             this.btnNijeIzostao.Location = new System.Drawing.Point(417, 115);
@@ -174,25 +173,90 @@
             this.btnNijeIzostao.TabIndex = 16;
             this.btnNijeIzostao.Text = "Nije izostao";
             this.btnNijeIzostao.UseVisualStyleBackColor = true;
+            this.btnNijeIzostao.Click += new System.EventHandler(this.btnNijeIzostao_Click);
+            // 
+            // btnIzostao
+            // 
+            this.btnIzostao.Location = new System.Drawing.Point(417, 46);
+            this.btnIzostao.Name = "btnIzostao";
+            this.btnIzostao.Size = new System.Drawing.Size(75, 23);
+            this.btnIzostao.TabIndex = 15;
+            this.btnIzostao.Text = "Izostao";
+            this.btnIzostao.UseVisualStyleBackColor = true;
+            this.btnIzostao.Click += new System.EventHandler(this.btnIzostao_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lblDatum);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Location = new System.Drawing.Point(33, 25);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(508, 276);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Evidencija sata";
+            // 
+            // txtIzostali
+            // 
+            this.txtIzostali.Location = new System.Drawing.Point(751, 67);
+            this.txtIzostali.Multiline = true;
+            this.txtIzostali.Name = "txtIzostali";
+            this.txtIzostali.ReadOnly = true;
+            this.txtIzostali.Size = new System.Drawing.Size(177, 378);
+            this.txtIzostali.TabIndex = 17;
+            // 
+            // txtPrisutni
+            // 
+            this.txtPrisutni.Location = new System.Drawing.Point(574, 67);
+            this.txtPrisutni.Multiline = true;
+            this.txtPrisutni.Name = "txtPrisutni";
+            this.txtPrisutni.ReadOnly = true;
+            this.txtPrisutni.Size = new System.Drawing.Size(148, 378);
+            this.txtPrisutni.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(764, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Izostali";
+            this.label4.Click += new System.EventHandler(this.label4_Click_1);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(584, 42);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Prisutni";
             // 
             // EvidencijaSata
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 523);
+            this.ClientSize = new System.Drawing.Size(958, 523);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtPrisutni);
+            this.Controls.Add(this.txtIzostali);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblDatum);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Name = "EvidencijaSata";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Evidencija sata";
             this.Load += new System.EventHandler(this.EvidencijaSata_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,6 +278,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnNijeIzostao;
         private System.Windows.Forms.Button btnIzostao;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtIzostali;
+        private System.Windows.Forms.TextBox txtPrisutni;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
 
     }
 }

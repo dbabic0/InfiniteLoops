@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtImePrezime = new System.Windows.Forms.TextBox();
             this.cmbPopis = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -92,17 +93,29 @@
             // 
             // cmbPopis
             // 
+            this.cmbPopis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPopis.FormattingEnabled = true;
             this.cmbPopis.Location = new System.Drawing.Point(213, 38);
             this.cmbPopis.Name = "cmbPopis";
             this.cmbPopis.Size = new System.Drawing.Size(121, 21);
             this.cmbPopis.TabIndex = 6;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(379, 164);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(94, 23);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Odabir uloge";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // IzbornikProfesora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 157);
+            this.ClientSize = new System.Drawing.Size(483, 199);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.cmbPopis);
             this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label2);
@@ -126,5 +139,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtImePrezime;
         private System.Windows.Forms.ComboBox cmbPopis;
+        private System.Windows.Forms.Button button3;
     }
 }

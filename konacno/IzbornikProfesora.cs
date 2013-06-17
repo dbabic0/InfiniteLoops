@@ -64,5 +64,13 @@ namespace Forme
 
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OdabirUloge odabiruloge = new OdabirUloge();
+            this.Hide();
+            odabiruloge.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace Forme
 
         private void btnEvidencijaSata_Click(object sender, EventArgs e)
         {
-            EvidencijaSata evidencijasata = new EvidencijaSata();
+            EvidencijaSata evidencijasata = new EvidencijaSata(cmbPredmeti.Text, true);
             this.Hide();
             evidencijasata.ShowDialog();
             this.Show();
