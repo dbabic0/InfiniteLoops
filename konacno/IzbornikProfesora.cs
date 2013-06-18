@@ -72,5 +72,14 @@ namespace Forme
             odabiruloge.ShowDialog();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PopisPredmetnihUcenika popispredmetnihucenika = new PopisPredmetnihUcenika(cmbPopis.SelectedItem.ToString(),txtImePrezime.Text);
+            this.Hide();
+            popispredmetnihucenika.ShowDialog();
+            this.Show();
+
+        }
     }
 }
