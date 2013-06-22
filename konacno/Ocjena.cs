@@ -12,9 +12,10 @@ namespace Forme
 {
     public partial class Ocjena : Form
     {
-        public Ocjena()
+        public Ocjena(string id_korisnika,string id_predmeta,string ocjena)
         {
             InitializeComponent();
+            this.CenterToParent();
         }
     }
 }

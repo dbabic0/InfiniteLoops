@@ -229,5 +229,30 @@ namespace Forme
             BazaPodataka.Instance.IzvrsiUpit(sql);
         }
 
+        private void dataGridView1_Click(object sender, EventArgs e)
+        {
+            string mjesec = DateTime.Now.Month.ToString();
+            mjesec += ".";
+            int odabrani_stupac = dataGridView1.CurrentCell.ColumnIndex;
+            int odabrani_redak = dataGridView1.CurrentRow.Index;
+
+            if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec)
+            {
+                Ocjena ocjena= new Ocjena(Id,predmet_id,dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].ToString());
+                this.Hide();
+                ocjena.ShowDialog();
+                dataGridView1.Columns.Clear();
+                dataGridView1.Rows.Clear();
+                Pokazi_ocjene();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Ne mozete uredivati ocjene proslih mjeseca!");
+            }
+
+
+        }
+
     }
 }
