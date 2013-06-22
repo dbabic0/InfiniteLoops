@@ -50,6 +50,7 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,7 +207,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label12.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label12.Location = new System.Drawing.Point(830, 305);
+            this.label12.Location = new System.Drawing.Point(831, 204);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(175, 18);
             this.label12.TabIndex = 20;
@@ -214,7 +215,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(870, 331);
+            this.textBox9.Location = new System.Drawing.Point(871, 229);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(90, 43);
@@ -223,9 +224,9 @@
             // button1
             // 
             this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Location = new System.Drawing.Point(870, 396);
+            this.button1.Location = new System.Drawing.Point(870, 420);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(91, 23);
             this.button1.TabIndex = 22;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = true;
@@ -256,11 +257,23 @@
             this.dataGridView1.Size = new System.Drawing.Size(743, 210);
             this.dataGridView1.TabIndex = 23;
             // 
+            // button2
+            // 
+            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.Location = new System.Drawing.Point(871, 278);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(89, 53);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "Potvrdi zaključnu ocjenu";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Predmet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 455);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox9);
@@ -311,5 +324,6 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
     }
 }
