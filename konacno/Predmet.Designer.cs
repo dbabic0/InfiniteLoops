@@ -43,7 +43,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -174,16 +173,6 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "Aktivnost";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(140, 108);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(334, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "9.     10.     11.     12.     1.     2.     3.     4.      5.     6.   ";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -282,7 +271,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -319,7 +307,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label12;

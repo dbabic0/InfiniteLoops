@@ -238,7 +238,7 @@ namespace Forme
 
             if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec)
             {
-                Ocjena ocjena= new Ocjena(Id,predmet_id,dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].ToString());
+                Ocjena ocjena= new Ocjena(Id,predmet_id,dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(),DateTime.Now.Month.ToString(),odabrani_redak);
                 this.Hide();
                 ocjena.ShowDialog();
                 dataGridView1.Columns.Clear();
