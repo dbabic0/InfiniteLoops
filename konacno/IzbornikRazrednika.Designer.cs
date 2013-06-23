@@ -36,6 +36,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPredmeti = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEvidencijaSata
@@ -110,11 +111,21 @@
             this.cmbPredmeti.TabIndex = 7;
             this.cmbPredmeti.SelectedIndexChanged += new System.EventHandler(this.cmbPredmet_SelectedIndexChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(114, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Razred";
+            // 
             // IzbornikRazrednika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 173);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbPredmeti);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
@@ -140,5 +151,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbPredmeti;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -64,12 +64,27 @@ namespace Forme
 
         private void btnPopisUcenika_Click(object sender, EventArgs e)
         {
-            PopisUcenika popisucenika = new PopisUcenika();
+            string sql = "SELECT \"ID_razred\" FROM \"Razred\" WHERE naziv_razreda='" + cmbPredmeti.Text + "';";
+            NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            string id_razred="";
+            while(citac.Read())
+            {
+                id_razred = citac["ID_razred"].ToString();
+            }
+            citac.Close();
+            sql = "SELECT \"ID_korisnik\" FROM \"ucenik_pohada_razred\" WHERE \"ID_razred\"='" + id_razred + "';";
+            citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            List<string> lista_idjeva = new List<string>();
+            while(citac.Read())
+            {
+                lista_idjeva.Add(citac["ID_korisnik"].ToString());
+
+            }
+            citac.Close();
+            PopisPredmetnihUcenika popis=new PopisPredmetnihUcenika(lista_idjeva,txtImePrezime.Text);
             this.Hide();
-
-            popisucenika.ShowDialog();
+            popis.ShowDialog();
             this.Show();
-
         }
     }
 }

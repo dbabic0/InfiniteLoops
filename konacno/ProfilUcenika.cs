@@ -12,7 +12,7 @@ namespace Forme
 {
     public partial class ProfilUcenika : Form
     {
-        public ProfilUcenika()
+        public ProfilUcenika(string id, string prezime, string ime, string oib, string datum)
         {
             InitializeComponent();
         }

@@ -16,6 +16,7 @@ namespace Forme
         private string id_predmeta;
         private string predmet;
         private string imeprofesora;
+        private bool profesor_razrednik;
        
         public PopisPredmetnihUcenika(string predmet,string imeprofesora)
         {
@@ -28,8 +29,69 @@ namespace Forme
             this.CenterToParent();
             textBox3.Text = imeprofesora;
 
-
+            profesor_razrednik = false;
             DohvatiUcenike();
+
+        }
+
+        public PopisPredmetnihUcenika(List<string> lista_idjeva, string imeprofesora)
+        {
+            InitializeComponent();
+            textBox3.Text = imeprofesora;
+            this.CenterToParent();
+            this.imeprofesora = imeprofesora;
+            button1.Visible = false;
+            profesor_razrednik = true;
+
+            DataGridViewColumn col1 = new DataGridViewTextBoxColumn();
+            col1.HeaderText = "OIB";
+            dataGridView1.Columns.Add(col1);
+
+            DataGridViewColumn col4 = new DataGridViewTextBoxColumn();
+            col4.HeaderText = "Datum rođenja";
+            dataGridView1.Columns.Add(col4);
+
+            DataGridViewColumn col2 = new DataGridViewTextBoxColumn();
+            col2.HeaderText = "Ime";//order by
+            dataGridView1.Columns.Add(col2);
+
+            DataGridViewColumn col3 = new DataGridViewTextBoxColumn();
+            col3.HeaderText = "Prezime";
+            dataGridView1.Columns.Add(col3);
+
+            DataGridViewColumn col5 = new DataGridViewTextBoxColumn();
+            col5.HeaderText = "Id";
+            dataGridView1.Columns.Add(col5);
+            dataGridView1.Columns[4].Visible = false;
+
+            int i = 0;
+            foreach (string id in lista_idjeva)
+            {
+                dataGridView1.Rows.Add();
+                string sql = "SELECT \"OIB\", ime,prezime,datum_rodenja::varchar(10) FROM \"Korisnik\" WHERE \"ID_korisnik\"='" + id + "';";
+               NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                    while (citac.Read())
+                    {
+                        dataGridView1.Rows[i].Cells[0].Value = citac["OIB"].ToString();
+                        dataGridView1.Rows[i].Cells[1].Value = citac["datum_rodenja"].ToString();
+                        dataGridView1.Rows[i].Cells[2].Value = citac["ime"].ToString();
+                        dataGridView1.Rows[i].Cells[3].Value = citac["prezime"].ToString();
+                        dataGridView1.Rows[i].Cells[4].Value = id;
+                    }
+
+                    i++;
+
+                    citac.Close();
+            }
+
+    
+            this.dataGridView1.Sort(this.dataGridView1.Columns[3], ListSortDirection.Ascending);
+
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
 
         }
 
@@ -133,7 +195,7 @@ namespace Forme
                     citac.Close();
                 }
             }
-            this.dataGridView1.Sort(this.dataGridView1.Columns[2], ListSortDirection.Ascending);
+            this.dataGridView1.Sort(this.dataGridView1.Columns[3], ListSortDirection.Ascending);
 
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -197,12 +259,36 @@ namespace Forme
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1) { }
+            if (profesor_razrednik == false)
+            {
+                if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1) { }
+                else
+                {
+                    UpaliFormuPredmet(dataGridView1.CurrentRow.Index);
+                }
+            }
             else
             {
-                UpaliFormuPredmet(dataGridView1.CurrentRow.Index);
-            }
+                if (dataGridView1.CurrentRow.Index == dataGridView1.Rows.Count - 1) { }
+                else
+                {
+                    int selektirani = dataGridView1.CurrentRow.Index;
+                    string ime, prezime, datum, oib, id;
+                    oib = dataGridView1.Rows[selektirani].Cells[0].Value.ToString();
+                    datum = dataGridView1.Rows[selektirani].Cells[1].Value.ToString();
+                    ime = dataGridView1.Rows[selektirani].Cells[2].Value.ToString();
+                    prezime = dataGridView1.Rows[selektirani].Cells[3].Value.ToString();
+                    id = dataGridView1.Rows[selektirani].Cells[4].Value.ToString();
 
+                    this.Hide();
+                    ProfilUcenika profil = new ProfilUcenika(id, prezime, ime, oib, datum);
+                    profil.ShowDialog();
+                    this.Show();
+                    
+
+                }
+
+            }
         }
     }
 }
