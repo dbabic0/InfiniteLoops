@@ -238,7 +238,15 @@ namespace Forme
 
             if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec)
             {
-                Ocjena ocjena= new Ocjena(Id,predmet_id,dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(),DateTime.Now.Month.ToString(),odabrani_redak);
+                Ocjena ocjena;
+                try
+                {
+                     ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), DateTime.Now.Month.ToString(), odabrani_redak);
+                }
+                catch
+                {
+                     ocjena = new Ocjena(Id, predmet_id, "0", DateTime.Now.Month.ToString(), odabrani_redak);
+                }
                 this.Hide();
                 ocjena.ShowDialog();
                 dataGridView1.Columns.Clear();
@@ -251,6 +259,11 @@ namespace Forme
                 MessageBox.Show("Ne mozete uredivati ocjene proslih mjeseca!");
             }
 
+
+        }
+
+        private void Predmet_Load(object sender, EventArgs e)
+        {
 
         }
 
