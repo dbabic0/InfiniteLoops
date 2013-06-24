@@ -81,7 +81,7 @@ namespace Forme
 
             }
             citac.Close();
-            PopisPredmetnihUcenika popis=new PopisPredmetnihUcenika(lista_idjeva,txtImePrezime.Text);
+            PopisPredmetnihUcenika popis=new PopisPredmetnihUcenika(lista_idjeva,txtImePrezime.Text, cmbPredmeti.Text);
             this.Hide();
             popis.ShowDialog();
             this.Show();

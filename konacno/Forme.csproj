@@ -57,6 +57,12 @@
     <Compile Include="EvidencijaSata.Designer.cs">
       <DependentUpon>EvidencijaSata.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izostanci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izostanci.Designer.cs">
+      <DependentUpon>Izostanci.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pocetna.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EvidencijaSata.resx">
       <DependentUpon>EvidencijaSata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izostanci.resx">
+      <DependentUpon>Izostanci.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pocetna.resx">
       <DependentUpon>Pocetna.cs</DependentUpon>

@@ -17,8 +17,10 @@ namespace Forme
         private string predmet;
         private string imeprofesora;
         private bool profesor_razrednik;
+        private string razred;
+
        
-        public PopisPredmetnihUcenika(string predmet,string imeprofesora)
+        public PopisPredmetnihUcenika(string predmet,string razred,string imeprofesora)
         {
             InitializeComponent();
 
@@ -30,16 +32,18 @@ namespace Forme
             textBox3.Text = imeprofesora;
 
             profesor_razrednik = false;
+            this.razred = razred;
             DohvatiUcenike();
 
         }
 
-        public PopisPredmetnihUcenika(List<string> lista_idjeva, string imeprofesora)
+        public PopisPredmetnihUcenika(List<string> lista_idjeva, string imeprofesora, string razred)
         {
             InitializeComponent();
             textBox3.Text = imeprofesora;
             this.CenterToParent();
             this.imeprofesora = imeprofesora;
+            this.razred = razred;
             button1.Visible = false;
             profesor_razrednik = true;
 
@@ -97,7 +101,9 @@ namespace Forme
 
         private void DohvatiUcenike()
         {
+       
             string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE \"naziv_predmeta\"='" + predmet + "';";
+    
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             while (citac.Read())
             {
@@ -105,19 +111,37 @@ namespace Forme
 
             }
             citac.Close();
+            string id_razred = "";
+            sql = "SELECT \"ID_razred\" FROM \"Razred\" WHERE \"naziv_razreda\"='"+razred+"';";
+            citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            while (citac.Read())
+            {
+                id_razred = citac["ID_razred"].ToString();
+            }
 
-
-            sql = "SELECT \"ID_korisnik\" FROM \"Pohada\" WHERE \"ID_predmet\"='" + id_predmeta + "';";
+            sql = "SELECT \"Pohada\".\"ID_korisnik\" FROM \"Pohada\" WHERE \"Pohada\".\"ID_predmet\"='" + id_predmeta + "';";
+          //  AND \"ucenik_pohada_razred\".\"ID_razred\"='"+id_razred+"' AND \ucenik_pohada_razred\".\"ID_predmet\"='"+id_predmeta+"';";
             citac = BazaPodataka.Instance.DohvatiDataReader(sql);
 
             List<string> idjevi = new List<string>();
+            List<string> idjevi2 = new List<string>();
 
             while (citac.Read())
             {
-                idjevi.Add(citac["ID_korisnik"].ToString());
+                idjevi2.Add(citac["ID_korisnik"].ToString());
 
             }
             citac.Close();
+            foreach (string id in idjevi2)
+            {
+                sql = "SELECT \"ID_korisnik\" FROM \"ucenik_pohada_razred\" WHERE \"ID_korisnik\"='"+id+"' AND \"ID_razred\"='"+id_razred+"';";
+                citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                while (citac.Read())
+                {
+                    idjevi.Add(citac["ID_korisnik"].ToString());
+                }
+                citac.Close();
+            }
 
             DataGridViewColumn col1 = new DataGridViewTextBoxColumn();
             col1.HeaderText = "OIB";

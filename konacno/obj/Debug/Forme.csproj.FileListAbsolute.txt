@@ -126,3 +126,4 @@ C:\Users\Nikolina\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.ProfilU
 C:\Users\Nikolina\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.Properties.Resources.resources
 C:\Users\Nikolina\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.Form1.resources
 C:\Users\Nikolina\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.csproj.GenerateResource.Cache
+C:\Users\Dajana\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.Izostanci.resources

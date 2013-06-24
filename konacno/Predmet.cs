@@ -55,6 +55,7 @@ namespace Forme
             textBox9.Enabled = false;
             string sql = "SELECT \"ID_predmet\" FROM \"Pohada\" WHERE \"ID_korisnik\"='" + id + "';";
             profesor_razrednik = true;
+            button3.Visible = true;
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
 
             List<string> idjevi_predmeta = new List<string>();
@@ -376,6 +377,24 @@ namespace Forme
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //tectbox3
+            //combobox1
+            if (comboBox1.Text == "")
+            {
+                MessageBox.Show("Niste odabrali predmet!");
+                
+            }
+            else
+            {
+
+                Izostanci izostanci = new Izostanci(textBox3.Text, comboBox1.Text);
+                izostanci.ShowDialog();
+
+            }
         }
 
     }

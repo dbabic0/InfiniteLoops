@@ -40,7 +40,7 @@ namespace Forme
             }
 
             cmbPopis.SelectedIndex = 0;
-
+         
 
 
 
@@ -75,7 +75,7 @@ namespace Forme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PopisPredmetnihUcenika popispredmetnihucenika = new PopisPredmetnihUcenika(cmbPopis.SelectedItem.ToString(),txtImePrezime.Text);
+            PopisPredmetnihUcenika popispredmetnihucenika = new PopisPredmetnihUcenika(cmbPopis.SelectedItem.ToString(),comboBox1.SelectedItem.ToString(),txtImePrezime.Text);
             this.Hide();
             popispredmetnihucenika.ShowDialog();
             this.Show();
@@ -90,6 +90,44 @@ namespace Forme
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void cmbPopis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBox1.Items.Clear();
+            string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE \"naziv_predmeta\"='" + cmbPopis.Text + "'; ";
+            string id_predmet="";
+            NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            while (citac.Read())
+            {
+                id_predmet = citac["ID_predmet"].ToString();
+
+            }
+            citac.Close();
+            sql = "SELECT \"ID_razred\" FROM \"Predaje\" WHERE \"ID_predmet\"='"+id_predmet+"';";
+            citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            List<string> id_razreda=new List<string>();
+            while (citac.Read())
+            {
+                id_razreda.Add(citac["ID_razred"].ToString());
+            }
+            citac.Close();
+            foreach (string id in id_razreda)
+            {
+                sql = "SELECT \"naziv_razreda\" FROM \"Razred\" WHERE \"ID_razred\"='"+id+"'";
+                citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                while (citac.Read())
+                {
+                    comboBox1.Items.Add(citac["naziv_razreda"].ToString());
+                }
+                citac.Close();
+            }
+            comboBox1.SelectedIndex = 0;
         }
     }
 }
