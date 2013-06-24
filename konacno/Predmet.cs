@@ -15,6 +15,7 @@ namespace Forme
     {
         private string id;
         private string predmet_id;
+        public bool profesor_razrednik;
 
         private string Predmet_id
         {
@@ -42,7 +43,7 @@ namespace Forme
             }
         }
 
-        public Predmet(string id, string prezime, string ime, string oib, string datum, string predmet)
+        public Predmet(string id, string prezime, string ime, string oib, string datum)
         {
             InitializeComponent();
             this.CenterToParent();
@@ -50,7 +51,52 @@ namespace Forme
             textBox2.Text = datum;
             textBox3.Text = oib;
             Id = id;
+            button2.Visible = false;
+            textBox9.Enabled = false;
+            string sql = "SELECT \"ID_predmet\" FROM \"Pohada\" WHERE \"ID_korisnik\"='" + id + "';";
+            profesor_razrednik = true;
+            NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+
+            List<string> idjevi_predmeta = new List<string>();
+            while (citac.Read())
+            {
+                idjevi_predmeta.Add(citac["ID_predmet"].ToString());
+            }
+            citac.Close();
+
+            foreach (string id_pr in idjevi_predmeta)
+            { 
+                sql = "SELECT naziv_predmeta FROM \"Predmeti\" WHERE \"ID_predmet\"='"+id_pr+"';";
+                citac= BazaPodataka.Instance.DohvatiDataReader(sql);
+                while(citac.Read())
+                {
+                    comboBox1.Items.Add(citac["naziv_predmeta"].ToString());
+
+                }
+                citac.Close();
+
+
+            }
+
+
+
+           
+
+
+       }
+
+        public Predmet(string id, string prezime, string ime, string oib, string datum, string predmet)
+        {
+            InitializeComponent();
+            this.CenterToParent();
+            profesor_razrednik = false;
+            textBox1.Text = ime + " " + prezime;
+            textBox2.Text = datum;
+            textBox3.Text = oib;
+            Id = id;
             Predmet_id = predmet;
+            comboBox1.Visible = false;
+            label10.Visible = false;
             Pokazi_ocjene();
 
 
@@ -236,16 +282,39 @@ namespace Forme
             int odabrani_stupac = dataGridView1.CurrentCell.ColumnIndex;
             int odabrani_redak = dataGridView1.CurrentRow.Index;
 
-            if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec)
+            if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec || profesor_razrednik==true)
             {
                 Ocjena ocjena;
                 try
                 {
-                     ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), DateTime.Now.Month.ToString(), odabrani_redak);
+                    if (profesor_razrednik == false)
+                    {
+                        ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), DateTime.Now.Month.ToString(), odabrani_redak,false);
+                    }
+                    else 
+                    {
+
+                        string poslani_mjesec = "";
+                        if (odabrani_stupac >= 5) poslani_mjesec = (odabrani_stupac - 4).ToString();
+                        else poslani_mjesec = (odabrani_stupac + 8).ToString();
+                        ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), poslani_mjesec, odabrani_redak, true);
+                    }
                 }
+
                 catch
                 {
-                     ocjena = new Ocjena(Id, predmet_id, "0", DateTime.Now.Month.ToString(), odabrani_redak);
+                    if (profesor_razrednik == false)
+                    {
+                        ocjena = new Ocjena(Id, predmet_id, "0", DateTime.Now.Month.ToString(), odabrani_redak,false);
+                    }
+                    else 
+                    {
+                        string poslani_mjesec = "";
+                        if (odabrani_stupac >= 5) poslani_mjesec = (odabrani_stupac - 4).ToString();
+                        else poslani_mjesec = (odabrani_stupac + 8).ToString();
+                        
+                        ocjena = new Ocjena(Id, predmet_id, "0", poslani_mjesec, odabrani_redak, true);
+                    }
                 }
                 this.Hide();
                 ocjena.ShowDialog();
@@ -254,15 +323,57 @@ namespace Forme
                 Pokazi_ocjene();
                 this.Show();
             }
+          
             else
+            
             {
-                MessageBox.Show("Ne mozete uredivati ocjene proslih mjeseca!");
+                MessageBox.Show("Ne mozete uredivati ocjene mjeseca razlicite od trenutnog!");
             }
-
 
         }
 
         private void Predmet_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "") { }
+
+            else
+            { 
+                string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE naziv_predmeta= '"+comboBox1.Text+"';";
+                NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                while (citac.Read())
+                {
+                    Predmet_id = citac["ID_predmet"].ToString();
+                }
+                dataGridView1.Rows.Clear();
+                dataGridView1.Columns.Clear();
+                Pokazi_ocjene();
+
+           
+            }
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -70,10 +70,12 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Location = new System.Drawing.Point(273, 13);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 3;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label2
             // 
@@ -89,8 +91,10 @@
             // 
             this.txtImePrezime.Location = new System.Drawing.Point(4, 40);
             this.txtImePrezime.Name = "txtImePrezime";
+            this.txtImePrezime.ReadOnly = true;
             this.txtImePrezime.Size = new System.Drawing.Size(135, 20);
             this.txtImePrezime.TabIndex = 5;
+            this.txtImePrezime.TextChanged += new System.EventHandler(this.txtImePrezime_TextChanged);
             // 
             // cmbPopis
             // 

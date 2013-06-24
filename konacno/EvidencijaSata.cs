@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.Text.RegularExpressions;
 
 namespace Forme
 {
@@ -99,6 +100,18 @@ namespace Forme
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            Regex regex = new Regex(@"^[0-9]+$");
+
+            if (regex.IsMatch(textBox1.Text))
+            {
+
+            }
+            else 
+            {
+                textBox1.Text = "";
+                MessageBox.Show("U redni broj sata mozete unijeti samo brojeve!");
+            }
             if (textBox1.Text == "") { }
             else
             {
@@ -125,6 +138,7 @@ namespace Forme
 
 
                 MessageBox.Show("Evidencija sata uspjesno unesena!");
+                this.Close();
             }
 
            

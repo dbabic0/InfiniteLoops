@@ -10,3 +10,6 @@ C:\Users\Maja\Desktop\maja\obj\Debug\Forme.pdb
 C:\Users\Dajana\Documents\GitHub\InfiniteLoops\imenik_konacno\bin\Debug\Forme.exe.config
 C:\Users\Dajana\Documents\GitHub\InfiniteLoops\imenik_konacno\obj\Debug\Forme.exe
 C:\Users\Dajana\Documents\GitHub\InfiniteLoops\imenik_konacno\obj\Debug\Forme.pdb
+C:\Users\antonela\Documents\GitHub\InfiniteLoops\imenik_konacno\bin\Debug\Forme.exe.config
+C:\Users\antonela\Documents\GitHub\InfiniteLoops\imenik_konacno\obj\Debug\Forme.exe
+C:\Users\antonela\Documents\GitHub\InfiniteLoops\imenik_konacno\obj\Debug\Forme.pdb

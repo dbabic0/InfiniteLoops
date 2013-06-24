@@ -86,5 +86,10 @@ namespace Forme
             popis.ShowDialog();
             this.Show();
         }
+
+        private void txtImePrezime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

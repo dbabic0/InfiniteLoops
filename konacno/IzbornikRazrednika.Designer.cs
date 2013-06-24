@@ -82,11 +82,14 @@
             // 
             this.txtImePrezime.Location = new System.Drawing.Point(15, 30);
             this.txtImePrezime.Name = "txtImePrezime";
+            this.txtImePrezime.ReadOnly = true;
             this.txtImePrezime.Size = new System.Drawing.Size(159, 20);
             this.txtImePrezime.TabIndex = 4;
+            this.txtImePrezime.TextChanged += new System.EventHandler(this.txtImePrezime_TextChanged);
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Location = new System.Drawing.Point(273, 30);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);

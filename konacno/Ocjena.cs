@@ -17,6 +17,7 @@ namespace Forme
         private string kategorija;
         private string id_korisnik;
         private bool postojeca;
+        private bool profesor_razrednik;
         public string Id_predmeta
         {
             get{return id_predmeta;}
@@ -38,11 +39,12 @@ namespace Forme
             set { postojeca = value; }
         }
 
-        public Ocjena(string id_korisnika,string id_predmeta,string ocjena,string mjesec,int odabrani_redak)
+        public Ocjena(string id_korisnika,string id_predmeta,string ocjena,string mjesec,int odabrani_redak, bool profesor_razrednik)
         {
             InitializeComponent();
             this.CenterToParent();
             Id_predmeta=id_predmeta;
+            this.profesor_razrednik = profesor_razrednik;
             if (string.Compare(ocjena, "0") == 0)
             {
                 Postojeca = false;
@@ -58,13 +60,16 @@ namespace Forme
             else if (odabrani_redak == 2) Kategorija = "aktivnost";
             else Kategorija = "domaca_zadaca";
 
-            string sql = "SELECT napomena FROM \"Ocjena\" WHERE \"ID_korisnik\"='" + id_korisnika + "' AND \"ID_predmet\"='" + id_predmeta + "'";
+            string sql = "SELECT napomena,datum FROM \"Ocjena\" WHERE \"ID_korisnik\"='" + id_korisnika + "' AND \"ID_predmet\"='" + id_predmeta + "'";
             sql += " AND date_part('month',datum)='" + mjesec + "' AND " + Kategorija + " IS NOT NULL;";
 
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             while (citac.Read())
             {
                 textBox2.Text = citac["napomena"].ToString();
+               //ss MessageBox.Show(citac["datum"].ToString());
+                dateTimePicker1.Value = Convert.ToDateTime(citac["datum"].ToString());
+
             }
             //MessageBox.Show(ocjena);
 
@@ -150,32 +155,41 @@ namespace Forme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "")
+            if (profesor_razrednik == false)
             {
-                MessageBox.Show("Nije odabrana niti jedna ocjena!");
-            }
-            else if (comboBox1.Text == "1" && comboBox2.Text == "-")
-            {
-                MessageBox.Show("Ne mogu upisati ocjenu -1");
-            }
-            else
-            {
-                if (Postojeca == false)
+                if (comboBox1.Text == "")
                 {
-                    string sql = "INSERT INTO \"Ocjena\" ( \"ID_predmet\", \"ID_korisnik\", datum, " + kategorija + ", napomena) VALUES";
-                    sql += "( '" + Id_predmeta + "','" + Id_korisnik + "','" + DateTime.Now.ToShortDateString() + "','" + comboBox2.Text + comboBox1.Text + "','" + textBox2.Text + "');";
-                    BazaPodataka.Instance.IzvrsiUpit(sql);
-                    
+                    MessageBox.Show("Nije odabrana niti jedna ocjena!");
+                }
+                else if (comboBox1.Text == "1" && comboBox2.Text == "-")
+                {
+                    MessageBox.Show("Ne mogu upisati ocjenu -1");
                 }
                 else
                 {
-                    string sql = "UPDATE \"Ocjena\" SET " + kategorija + "='" + comboBox2.Text + comboBox1.Text + "', napomena='" + textBox2.Text + "'  WHERE ";
-                    sql += "\"ID_korisnik\"='" + Id_korisnik + "' AND \"ID_predmet\"='" + Id_predmeta + "'";
-                    sql += " AND date_part('month',datum)='" + DateTime.Now.Month.ToString() + "';";
-                    BazaPodataka.Instance.IzvrsiUpit(sql);
-                    
+                    if (Postojeca == false)
+                    {
+                        string sql = "INSERT INTO \"Ocjena\" ( \"ID_predmet\", \"ID_korisnik\", datum, " + kategorija + ", napomena) VALUES";
+                        sql += "( '" + Id_predmeta + "','" + Id_korisnik + "','" + DateTime.Now.ToShortDateString() + "','" + comboBox2.Text + comboBox1.Text + "','" + textBox2.Text + "');";
+                        BazaPodataka.Instance.IzvrsiUpit(sql);
+
+                    }
+                    else
+                    {
+                        string sql = "UPDATE \"Ocjena\" SET " + kategorija + "='" + comboBox2.Text + comboBox1.Text + "', napomena='" + textBox2.Text + "'  WHERE ";
+                        sql += "\"ID_korisnik\"='" + Id_korisnik + "' AND \"ID_predmet\"='" + Id_predmeta + "'";
+                        sql += " AND date_part('month',datum)='" + DateTime.Now.Month.ToString() + "';";
+                        BazaPodataka.Instance.IzvrsiUpit(sql);
+
+                    }
+                    MessageBox.Show("Uspješno upisana ocjena!");
+                    this.Close();
                 }
-                MessageBox.Show("Uspješno upisana ocjena!");
+            }
+
+            else 
+            {
+
                 this.Close();
             }
 
