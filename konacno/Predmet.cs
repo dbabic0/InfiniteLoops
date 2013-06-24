@@ -47,15 +47,15 @@ namespace Forme
         {
             InitializeComponent();
             this.CenterToParent();
-            textBox1.Text = ime + " " + prezime;
-            textBox2.Text = datum;
-            textBox3.Text = oib;
+            txtImePrezimeUcenika.Text = ime + " " + prezime;
+            txtDatumRodenja.Text = datum;
+            txtOIB.Text = oib;
             Id = id;
-            button2.Visible = false;
-            textBox9.Enabled = false;
+            btnPotvrdiZakljucnu.Visible = false;
+            txtZakljucna.Enabled = false;
             string sql = "SELECT \"ID_predmet\" FROM \"Pohada\" WHERE \"ID_korisnik\"='" + id + "';";
             profesor_razrednik = true;
-            button3.Visible = true;
+            btnIzostanci.Visible = true;
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
 
             List<string> idjevi_predmeta = new List<string>();
@@ -71,19 +71,11 @@ namespace Forme
                 citac= BazaPodataka.Instance.DohvatiDataReader(sql);
                 while(citac.Read())
                 {
-                    comboBox1.Items.Add(citac["naziv_predmeta"].ToString());
+                    cmbPopis_predmeta.Items.Add(citac["naziv_predmeta"].ToString());
 
                 }
                 citac.Close();
-
-
             }
-
-
-
-           
-
-
        }
 
         public Predmet(string id, string prezime, string ime, string oib, string datum, string predmet)
@@ -91,17 +83,14 @@ namespace Forme
             InitializeComponent();
             this.CenterToParent();
             profesor_razrednik = false;
-            textBox1.Text = ime + " " + prezime;
-            textBox2.Text = datum;
-            textBox3.Text = oib;
+            txtImePrezimeUcenika.Text = ime + " " + prezime;
+            txtDatumRodenja.Text = datum;
+            txtOIB.Text = oib;
             Id = id;
             Predmet_id = predmet;
-            comboBox1.Visible = false;
+            cmbPopis_predmeta.Visible = false;
             label10.Visible = false;
             Pokazi_ocjene();
-
-
-
         }
 
         private void Pokazi_ocjene()
@@ -235,10 +224,10 @@ namespace Forme
             {
 
 
-                if (((float)(zbroj_ocjena / ukupno_ocjena)) > 5) textBox8.Text = "5";
+                if (((float)(zbroj_ocjena / ukupno_ocjena)) > 5) txtProsjek.Text = "5";
                 else
                 {
-                    textBox8.Text = ((Math.Round(zbroj_ocjena / ukupno_ocjena, 2))).ToString();
+                    txtProsjek.Text = ((Math.Round(zbroj_ocjena / ukupno_ocjena, 2))).ToString();
 
                 }
             }
@@ -248,10 +237,19 @@ namespace Forme
             {
                 while (citac.Read())
                 {
-                    textBox9.Text = citac["zakljucna_ocjena"].ToString();
+                    txtZakljucna.Text = citac["zakljucna_ocjena"].ToString();
                 }
             }
             citac.Close();
+            if (txtZakljucna.Text == "")
+            {
+
+            }
+            else
+            {
+                txtZakljucna.Enabled = false;
+                btnPotvrdiZakljucnu.Enabled = false;
+            }
         }
 
         public void dodaj_stupac(string ime_stupca)
@@ -268,12 +266,22 @@ namespace Forme
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string sql = "UPDATE \"Pohada\" SET zakljucna_ocjena='"+textBox9.Text+"'";
-            sql+=" WHERE \"ID_predmet\"='"+Predmet_id+"' AND \"ID_korisnik\"='"+id+"';";
-            MessageBox.Show("Uspješno unesena zaključna ocjena!");
+            DialogResult di = MessageBox.Show("Jeste li sigurni da želite unijeti zaključnu ocjenu?", "Zaključna ocjena",MessageBoxButtons.YesNo);
+            if (di == DialogResult.Yes)
+            {
+                string sql = "UPDATE \"Pohada\" SET zakljucna_ocjena='" + txtZakljucna.Text + "'";
+                sql += " WHERE \"ID_predmet\"='" + Predmet_id + "' AND \"ID_korisnik\"='" + id + "';";
+                MessageBox.Show("Uspješno unesena zaključna ocjena!");
 
 
-            BazaPodataka.Instance.IzvrsiUpit(sql);
+                BazaPodataka.Instance.IzvrsiUpit(sql);
+                btnPotvrdiZakljucnu.Enabled = false;
+                txtZakljucna.Enabled = false;
+            }
+            else
+            {
+
+            }
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
@@ -282,8 +290,11 @@ namespace Forme
             mjesec += ".";
             int odabrani_stupac = dataGridView1.CurrentCell.ColumnIndex;
             int odabrani_redak = dataGridView1.CurrentRow.Index;
-
-            if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec || profesor_razrednik==true)
+            if (dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value!=null)
+            {
+                MessageBox.Show("Ne mogu mijenjati već unesenu ocjenu!");
+            }
+            else if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec || profesor_razrednik==true)
             {
                 Ocjena ocjena;
                 try
@@ -340,11 +351,11 @@ namespace Forme
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "") { }
+            if (cmbPopis_predmeta.Text == "") { }
 
             else
             { 
-                string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE naziv_predmeta= '"+comboBox1.Text+"';";
+                string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE naziv_predmeta= '"+cmbPopis_predmeta.Text+"';";
                 NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
                 while (citac.Read())
                 {
@@ -383,7 +394,7 @@ namespace Forme
         {
             //tectbox3
             //combobox1
-            if (comboBox1.Text == "")
+            if (cmbPopis_predmeta.Text == "")
             {
                 MessageBox.Show("Niste odabrali predmet!");
                 
@@ -391,7 +402,7 @@ namespace Forme
             else
             {
 
-                Izostanci izostanci = new Izostanci(textBox3.Text, comboBox1.Text);
+                Izostanci izostanci = new Izostanci(txtOIB.Text, cmbPopis_predmeta.Text);
                 izostanci.ShowDialog();
 
             }

@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPopisPredmetnih = new System.Windows.Forms.Button();
+            this.btnEvidencijaSata = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txtImePrezime = new System.Windows.Forms.TextBox();
             this.cmbPopis = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnOdabirUloge = new System.Windows.Forms.Button();
+            this.cmbRazred = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnPopisPredmetnih
             // 
-            this.button1.Location = new System.Drawing.Point(33, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 69);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Popis predmetnih učenika";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnPopisPredmetnih.Location = new System.Drawing.Point(33, 144);
+            this.btnPopisPredmetnih.Name = "btnPopisPredmetnih";
+            this.btnPopisPredmetnih.Size = new System.Drawing.Size(136, 69);
+            this.btnPopisPredmetnih.TabIndex = 0;
+            this.btnPopisPredmetnih.Text = "Popis predmetnih učenika";
+            this.btnPopisPredmetnih.UseVisualStyleBackColor = true;
+            this.btnPopisPredmetnih.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnEvidencijaSata
             // 
-            this.button2.Location = new System.Drawing.Point(273, 144);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 69);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Evidencija sata";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnEvidencijaSata.Location = new System.Drawing.Point(273, 144);
+            this.btnEvidencijaSata.Name = "btnEvidencijaSata";
+            this.btnEvidencijaSata.Size = new System.Drawing.Size(136, 69);
+            this.btnEvidencijaSata.TabIndex = 1;
+            this.btnEvidencijaSata.Text = "Evidencija sata";
+            this.btnEvidencijaSata.UseVisualStyleBackColor = true;
+            this.btnEvidencijaSata.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -109,25 +109,25 @@
             this.cmbPopis.TabIndex = 6;
             this.cmbPopis.SelectedIndexChanged += new System.EventHandler(this.cmbPopis_SelectedIndexChanged);
             // 
-            // button3
+            // btnOdabirUloge
             // 
-            this.button3.Location = new System.Drawing.Point(377, 230);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Odabir uloge";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnOdabirUloge.Location = new System.Drawing.Point(377, 230);
+            this.btnOdabirUloge.Name = "btnOdabirUloge";
+            this.btnOdabirUloge.Size = new System.Drawing.Size(94, 23);
+            this.btnOdabirUloge.TabIndex = 7;
+            this.btnOdabirUloge.Text = "Odabir uloge";
+            this.btnOdabirUloge.UseVisualStyleBackColor = true;
+            this.btnOdabirUloge.Click += new System.EventHandler(this.button3_Click);
             // 
-            // comboBox1
+            // cmbRazred
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(352, 84);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbRazred.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRazred.FormattingEnabled = true;
+            this.cmbRazred.Location = new System.Drawing.Point(352, 84);
+            this.cmbRazred.Name = "cmbRazred";
+            this.cmbRazred.Size = new System.Drawing.Size(121, 21);
+            this.cmbRazred.TabIndex = 8;
+            this.cmbRazred.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -154,15 +154,15 @@
             this.ClientSize = new System.Drawing.Size(483, 284);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.cmbRazred);
+            this.Controls.Add(this.btnOdabirUloge);
             this.Controls.Add(this.cmbPopis);
             this.Controls.Add(this.txtImePrezime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnEvidencijaSata);
+            this.Controls.Add(this.btnPopisPredmetnih);
             this.Name = "IzbornikProfesora";
             this.Text = "Izbornik profesora";
             this.ResumeLayout(false);
@@ -172,15 +172,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPopisPredmetnih;
+        private System.Windows.Forms.Button btnEvidencijaSata;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtImePrezime;
         private System.Windows.Forms.ComboBox cmbPopis;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnOdabirUloge;
+        private System.Windows.Forms.ComboBox cmbRazred;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
     }

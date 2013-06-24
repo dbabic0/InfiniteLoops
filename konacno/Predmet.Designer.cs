@@ -28,31 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtImePrezimeUcenika = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDatumRodenja = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtOIB = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtProsjek = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtZakljucna = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnPotvrdiZakljucnu = new System.Windows.Forms.Button();
+            this.cmbPopis_predmeta = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnIzostanci = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,14 +62,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ime i prezime ucenika:";
             // 
-            // textBox1
+            // txtImePrezimeUcenika
             // 
-            this.textBox1.Location = new System.Drawing.Point(143, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtImePrezimeUcenika.Location = new System.Drawing.Point(143, 6);
+            this.txtImePrezimeUcenika.Name = "txtImePrezimeUcenika";
+            this.txtImePrezimeUcenika.ReadOnly = true;
+            this.txtImePrezimeUcenika.Size = new System.Drawing.Size(100, 20);
+            this.txtImePrezimeUcenika.TabIndex = 1;
+            this.txtImePrezimeUcenika.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -103,14 +99,14 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Datum rodenja:";
             // 
-            // textBox2
+            // txtDatumRodenja
             // 
-            this.textBox2.Location = new System.Drawing.Point(143, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtDatumRodenja.Location = new System.Drawing.Point(143, 36);
+            this.txtDatumRodenja.Name = "txtDatumRodenja";
+            this.txtDatumRodenja.ReadOnly = true;
+            this.txtDatumRodenja.Size = new System.Drawing.Size(100, 20);
+            this.txtDatumRodenja.TabIndex = 5;
+            this.txtDatumRodenja.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label4
             // 
@@ -122,14 +118,14 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "OIB:";
             // 
-            // textBox3
+            // txtOIB
             // 
-            this.textBox3.Location = new System.Drawing.Point(314, 36);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.txtOIB.Location = new System.Drawing.Point(314, 36);
+            this.txtOIB.Name = "txtOIB";
+            this.txtOIB.ReadOnly = true;
+            this.txtOIB.Size = new System.Drawing.Size(100, 20);
+            this.txtOIB.TabIndex = 7;
+            this.txtOIB.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label5
             // 
@@ -142,46 +138,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "OCJENE";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(12, 136);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Pismeni";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(13, 204);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Usmeni";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(13, 264);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Domaca zadaca";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(13, 333);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Aktivnost";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -192,13 +148,13 @@
             this.label11.TabIndex = 18;
             this.label11.Text = "PROSJEK (predlozena zakljucna ocjena):";
             // 
-            // textBox8
+            // txtProsjek
             // 
-            this.textBox8.Location = new System.Drawing.Point(870, 150);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(90, 43);
-            this.textBox8.TabIndex = 19;
+            this.txtProsjek.Location = new System.Drawing.Point(870, 150);
+            this.txtProsjek.Multiline = true;
+            this.txtProsjek.Name = "txtProsjek";
+            this.txtProsjek.Size = new System.Drawing.Size(90, 43);
+            this.txtProsjek.TabIndex = 19;
             // 
             // label12
             // 
@@ -211,72 +167,72 @@
             this.label12.TabIndex = 20;
             this.label12.Text = "ZAKLJUCNA OCJENA";
             // 
-            // textBox9
+            // txtZakljucna
             // 
-            this.textBox9.Location = new System.Drawing.Point(871, 229);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(90, 43);
-            this.textBox9.TabIndex = 21;
+            this.txtZakljucna.Location = new System.Drawing.Point(871, 229);
+            this.txtZakljucna.Multiline = true;
+            this.txtZakljucna.Name = "txtZakljucna";
+            this.txtZakljucna.Size = new System.Drawing.Size(90, 43);
+            this.txtZakljucna.TabIndex = 21;
             // 
-            // button1
+            // btnBack
             // 
-            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Location = new System.Drawing.Point(870, 420);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBack.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnBack.Location = new System.Drawing.Point(870, 420);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(91, 23);
+            this.btnBack.TabIndex = 22;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(37, 136);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Size = new System.Drawing.Size(743, 210);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
             // 
-            // button2
+            // btnPotvrdiZakljucnu
             // 
-            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button2.Location = new System.Drawing.Point(871, 278);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(89, 53);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "Potvrdi zaključnu ocjenu";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnPotvrdiZakljucnu.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPotvrdiZakljucnu.Location = new System.Drawing.Point(871, 278);
+            this.btnPotvrdiZakljucnu.Name = "btnPotvrdiZakljucnu";
+            this.btnPotvrdiZakljucnu.Size = new System.Drawing.Size(89, 53);
+            this.btnPotvrdiZakljucnu.TabIndex = 24;
+            this.btnPotvrdiZakljucnu.Text = "Potvrdi zaključnu ocjenu";
+            this.btnPotvrdiZakljucnu.UseVisualStyleBackColor = true;
+            this.btnPotvrdiZakljucnu.Click += new System.EventHandler(this.button2_Click);
             // 
-            // comboBox1
+            // cmbPopis_predmeta
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(122, 70);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 25;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbPopis_predmeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPopis_predmeta.FormattingEnabled = true;
+            this.cmbPopis_predmeta.Location = new System.Drawing.Point(122, 70);
+            this.cmbPopis_predmeta.Name = "cmbPopis_predmeta";
+            this.cmbPopis_predmeta.Size = new System.Drawing.Size(121, 21);
+            this.cmbPopis_predmeta.TabIndex = 25;
+            this.cmbPopis_predmeta.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -289,44 +245,40 @@
             this.label10.Text = "Popis predmeta";
             this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
-            // button3
+            // btnIzostanci
             // 
-            this.button3.Location = new System.Drawing.Point(269, 68);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "Izostanci";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnIzostanci.Location = new System.Drawing.Point(269, 68);
+            this.btnIzostanci.Name = "btnIzostanci";
+            this.btnIzostanci.Size = new System.Drawing.Size(75, 23);
+            this.btnIzostanci.TabIndex = 27;
+            this.btnIzostanci.Text = "Izostanci";
+            this.btnIzostanci.UseVisualStyleBackColor = true;
+            this.btnIzostanci.Visible = false;
+            this.btnIzostanci.Click += new System.EventHandler(this.button3_Click);
             // 
             // Predmet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 455);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnIzostanci);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.cmbPopis_predmeta);
+            this.Controls.Add(this.btnPotvrdiZakljucnu);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.txtZakljucna);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.txtProsjek);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtOIB);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtDatumRodenja);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtImePrezimeUcenika);
             this.Controls.Add(this.label1);
             this.Name = "Predmet";
             this.Text = "Predmet ucenika";
@@ -340,27 +292,23 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtImePrezimeUcenika;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDatumRodenja;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtOIB;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtProsjek;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtZakljucna;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnPotvrdiZakljucnu;
+        private System.Windows.Forms.ComboBox cmbPopis_predmeta;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnIzostanci;
     }
 }

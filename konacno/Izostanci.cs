@@ -40,8 +40,8 @@ namespace Forme
             DataGridViewColumn col3 = new DataGridViewTextBoxColumn();
             col2.HeaderText = "Predmet";//order by
             dataGridView1.Columns.Add(col3);
-           
-            sql="SELECT \"ID_predmet\", datum FROM \"Izostanci\" WHERE \"ID_korisnik\"='"+id_korisnik+"' AND \"ID_predmet\"='"+id_predmet+"' ORDER BY datum;";
+
+            sql = "SELECT \"ID_predmet\", datum::varchar(10) FROM \"Izostanci\" WHERE \"ID_korisnik\"='" + id_korisnik + "' AND \"ID_predmet\"='" + id_predmet + "' ORDER BY datum;";
             citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             int i = 0;
             List<string> datum = new List<string>();

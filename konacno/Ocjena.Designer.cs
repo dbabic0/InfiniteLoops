@@ -32,10 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.txtNapomena = new System.Windows.Forms.TextBox();
+            this.btnSpremi = new System.Windows.Forms.Button();
+            this.cmbOcjena = new System.Windows.Forms.ComboBox();
+            this.cmbPredznak = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -73,63 +73,63 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Napomena:";
             // 
-            // textBox2
+            // txtNapomena
             // 
-            this.textBox2.Location = new System.Drawing.Point(78, 74);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 69);
-            this.textBox2.TabIndex = 5;
+            this.txtNapomena.Location = new System.Drawing.Point(78, 74);
+            this.txtNapomena.Multiline = true;
+            this.txtNapomena.Name = "txtNapomena";
+            this.txtNapomena.Size = new System.Drawing.Size(200, 69);
+            this.txtNapomena.TabIndex = 5;
             // 
-            // button1
+            // btnSpremi
             // 
-            this.button1.Location = new System.Drawing.Point(203, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Spremi";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSpremi.Location = new System.Drawing.Point(203, 149);
+            this.btnSpremi.Name = "btnSpremi";
+            this.btnSpremi.Size = new System.Drawing.Size(75, 23);
+            this.btnSpremi.TabIndex = 6;
+            this.btnSpremi.Text = "Spremi";
+            this.btnSpremi.UseVisualStyleBackColor = true;
+            this.btnSpremi.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // cmbOcjena
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbOcjena.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOcjena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cmbOcjena.FormattingEnabled = true;
+            this.cmbOcjena.Items.AddRange(new object[] {
             "5",
             "4",
             "3",
             "2",
             "1"});
-            this.comboBox1.Location = new System.Drawing.Point(140, 40);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(39, 28);
-            this.comboBox1.TabIndex = 7;
+            this.cmbOcjena.Location = new System.Drawing.Point(140, 40);
+            this.cmbOcjena.Name = "cmbOcjena";
+            this.cmbOcjena.Size = new System.Drawing.Size(39, 28);
+            this.cmbOcjena.TabIndex = 7;
             // 
-            // comboBox2
+            // cmbPredznak
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cmbPredznak.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPredznak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cmbPredznak.FormattingEnabled = true;
+            this.cmbPredznak.Items.AddRange(new object[] {
             "",
             "+",
             "-"});
-            this.comboBox2.Location = new System.Drawing.Point(78, 40);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(39, 28);
-            this.comboBox2.TabIndex = 8;
+            this.cmbPredznak.Location = new System.Drawing.Point(78, 40);
+            this.cmbPredznak.Name = "cmbPredznak";
+            this.cmbPredznak.Size = new System.Drawing.Size(39, 28);
+            this.cmbPredznak.TabIndex = 8;
             // 
             // Ocjena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 200);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.cmbPredznak);
+            this.Controls.Add(this.cmbOcjena);
+            this.Controls.Add(this.btnSpremi);
+            this.Controls.Add(this.txtNapomena);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -147,9 +147,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox txtNapomena;
+        private System.Windows.Forms.Button btnSpremi;
+        private System.Windows.Forms.ComboBox cmbOcjena;
+        private System.Windows.Forms.ComboBox cmbPredznak;
     }
 }

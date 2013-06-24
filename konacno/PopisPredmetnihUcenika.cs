@@ -44,7 +44,7 @@ namespace Forme
             this.CenterToParent();
             this.imeprofesora = imeprofesora;
             this.razred = razred;
-            button1.Visible = false;
+            btnRandomIspitivanje.Visible = false;
             profesor_razrednik = true;
 
             DataGridViewColumn col1 = new DataGridViewTextBoxColumn();
@@ -246,6 +246,7 @@ namespace Forme
         {
             bool ponovno_generiraj = false;
             int ispitani;
+            int i = 0;
             do
             {
                 ponovno_generiraj = false;
@@ -257,8 +258,15 @@ namespace Forme
                     ponovno_generiraj = true;
 
                 }
-
+                i++;
+                if (i == 100)
+                {
+                    MessageBox.Show("Svi učenici su već ispitani!");
+                    break;
+                }
             } while (ponovno_generiraj == true);
+            if (i == 100) { }
+            else
             UpaliFormuPredmet(ispitani);
         }
 

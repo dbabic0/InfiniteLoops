@@ -30,9 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtRedni_broj_sata = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTema = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblDatum = new System.Windows.Forms.Label();
             this.cmbPrisutni = new System.Windows.Forms.ComboBox();
@@ -69,12 +69,12 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Tema:";
             // 
-            // textBox1
+            // txtRedni_broj_sata
             // 
-            this.textBox1.Location = new System.Drawing.Point(98, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtRedni_broj_sata.Location = new System.Drawing.Point(98, 42);
+            this.txtRedni_broj_sata.Name = "txtRedni_broj_sata";
+            this.txtRedni_broj_sata.Size = new System.Drawing.Size(176, 20);
+            this.txtRedni_broj_sata.TabIndex = 5;
             // 
             // label3
             // 
@@ -85,13 +85,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Datum:";
             // 
-            // textBox2
+            // txtTema
             // 
-            this.textBox2.Location = new System.Drawing.Point(98, 77);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 185);
-            this.textBox2.TabIndex = 7;
+            this.txtTema.Location = new System.Drawing.Point(98, 77);
+            this.txtTema.Multiline = true;
+            this.txtTema.Name = "txtTema";
+            this.txtTema.Size = new System.Drawing.Size(176, 185);
+            this.txtTema.TabIndex = 7;
             // 
             // button1
             // 
@@ -187,12 +187,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtRedni_broj_sata);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.lblDatum);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtTema);
             this.groupBox2.Location = new System.Drawing.Point(33, 25);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(508, 276);
@@ -266,9 +266,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtRedni_broj_sata;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTema;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblDatum;
         private System.Windows.Forms.ComboBox cmbPrisutni;

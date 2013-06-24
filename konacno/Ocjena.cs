@@ -66,7 +66,7 @@ namespace Forme
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             while (citac.Read())
             {
-                textBox2.Text = citac["napomena"].ToString();
+                txtNapomena.Text = citac["napomena"].ToString();
                //ss MessageBox.Show(citac["datum"].ToString());
                 dateTimePicker1.Value = Convert.ToDateTime(citac["datum"].ToString());
 
@@ -75,53 +75,53 @@ namespace Forme
 
             if (ocjena[0] == '-')
             {
-                comboBox2.SelectedIndex = 2;
+                cmbPredznak.SelectedIndex = 2;
                 if (ocjena[1] == '5')
                 {
-                    comboBox1.SelectedIndex = 0; 
+                    cmbOcjena.SelectedIndex = 0; 
 
                 }
                 else if (ocjena[1] == '4')
                 {
-                    comboBox1.SelectedIndex = 1;
+                    cmbOcjena.SelectedIndex = 1;
 
                 }
                 else if (ocjena[1] == '3')
                 {
-                    comboBox1.SelectedIndex = 2;
+                    cmbOcjena.SelectedIndex = 2;
                 }
                 else if (ocjena[1] == '2')
                 {
-                    comboBox1.SelectedIndex = 3;
+                    cmbOcjena.SelectedIndex = 3;
                 }
                 else if (ocjena[1] == '1')
                 {
-                    comboBox1.SelectedIndex = 4;
+                    cmbOcjena.SelectedIndex = 4;
                 }
             }
             else if (ocjena[0] == '+')
             {
-                comboBox2.SelectedIndex = 1;
+                cmbPredznak.SelectedIndex = 1;
                 //+5 -5 5
                 if (ocjena[1] == '5')
                 {
-                    comboBox1.SelectedIndex = 0;
+                    cmbOcjena.SelectedIndex = 0;
                 }
                 else if (ocjena[1] == '4')
                 {
-                    comboBox1.SelectedIndex = 1;
+                    cmbOcjena.SelectedIndex = 1;
                 }
                 else if (ocjena[1] == '3')
                 {
-                    comboBox1.SelectedIndex = 2;
+                    cmbOcjena.SelectedIndex = 2;
                 }
                 else if (ocjena[1] == '2')
                 {
-                    comboBox1.SelectedIndex = 3;
+                    cmbOcjena.SelectedIndex = 3;
                 }
                 else if (ocjena[1] == '1')
                 {
-                    comboBox1.SelectedIndex = 4;
+                    cmbOcjena.SelectedIndex = 4;
                 }
             }
 
@@ -130,23 +130,23 @@ namespace Forme
 
                 if (ocjena[0] == '5')
                 {
-                    comboBox1.SelectedIndex = 0;
+                    cmbOcjena.SelectedIndex = 0;
                 }
                 else if (ocjena[0] == '4')
                 {
-                    comboBox1.SelectedIndex = 1;
+                    cmbOcjena.SelectedIndex = 1;
                 }
                 else if (ocjena[0] == '3')
                 {
-                    comboBox1.SelectedIndex = 2;
+                    cmbOcjena.SelectedIndex = 2;
                 }
                 else if (ocjena[0] == '2')
                 {
-                    comboBox1.SelectedIndex = 3;
+                    cmbOcjena.SelectedIndex = 3;
                 }
                 else if (ocjena[0] == '1')
                 {
-                    comboBox1.SelectedIndex = 4;
+                    cmbOcjena.SelectedIndex = 4;
                 }
             }
             citac.Close();
@@ -157,33 +157,42 @@ namespace Forme
         {
             if (profesor_razrednik == false)
             {
-                if (comboBox1.Text == "")
+                if (cmbOcjena.Text == "")
                 {
                     MessageBox.Show("Nije odabrana niti jedna ocjena!");
                 }
-                else if (comboBox1.Text == "1" && comboBox2.Text == "-")
+                else if (cmbOcjena.Text == "1" && cmbPredznak.Text == "-")
                 {
                     MessageBox.Show("Ne mogu upisati ocjenu -1");
                 }
                 else
                 {
-                    if (Postojeca == false)
-                    {
-                        string sql = "INSERT INTO \"Ocjena\" ( \"ID_predmet\", \"ID_korisnik\", datum, " + kategorija + ", napomena) VALUES";
-                        sql += "( '" + Id_predmeta + "','" + Id_korisnik + "','" + DateTime.Now.ToShortDateString() + "','" + comboBox2.Text + comboBox1.Text + "','" + textBox2.Text + "');";
-                        BazaPodataka.Instance.IzvrsiUpit(sql);
+                    DialogResult di=MessageBox.Show("Jeste li sigurni da želite unijeti ocjenu?","Potvrda unosa",MessageBoxButtons.YesNo);
 
+                    if (di == DialogResult.Yes)
+                    {
+                        if (Postojeca == false)
+                        {
+                            string sql = "INSERT INTO \"Ocjena\" ( \"ID_predmet\", \"ID_korisnik\", datum, " + kategorija + ", napomena) VALUES";
+                            sql += "( '" + Id_predmeta + "','" + Id_korisnik + "','" + DateTime.Now.ToShortDateString() + "','" + cmbPredznak.Text + cmbOcjena.Text + "','" + txtNapomena.Text + "');";
+                            BazaPodataka.Instance.IzvrsiUpit(sql);
+
+                        }
+                        else
+                        {
+                            string sql = "UPDATE \"Ocjena\" SET " + kategorija + "='" + cmbPredznak.Text + cmbOcjena.Text + "', napomena='" + txtNapomena.Text + "'  WHERE ";
+                            sql += "\"ID_korisnik\"='" + Id_korisnik + "' AND \"ID_predmet\"='" + Id_predmeta + "'";
+                            sql += " AND date_part('month',datum)='" + DateTime.Now.Month.ToString() + "';";
+                            BazaPodataka.Instance.IzvrsiUpit(sql);
+
+                        }
+                        MessageBox.Show("Uspješno upisana ocjena!");
+                        this.Close();
                     }
                     else
                     {
-                        string sql = "UPDATE \"Ocjena\" SET " + kategorija + "='" + comboBox2.Text + comboBox1.Text + "', napomena='" + textBox2.Text + "'  WHERE ";
-                        sql += "\"ID_korisnik\"='" + Id_korisnik + "' AND \"ID_predmet\"='" + Id_predmeta + "'";
-                        sql += " AND date_part('month',datum)='" + DateTime.Now.Month.ToString() + "';";
-                        BazaPodataka.Instance.IzvrsiUpit(sql);
 
                     }
-                    MessageBox.Show("Uspješno upisana ocjena!");
-                    this.Close();
                 }
             }
 

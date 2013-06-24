@@ -56,7 +56,7 @@ namespace Forme
 
             else 
             {
-                EvidencijaSata evidencijasata = new EvidencijaSata(cmbPopis.Text);
+                EvidencijaSata evidencijasata = new EvidencijaSata(cmbPopis.Text,cmbRazred.Text);
                 this.Hide();
                 evidencijasata.ShowDialog();
                 this.Show();
@@ -75,7 +75,7 @@ namespace Forme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PopisPredmetnihUcenika popispredmetnihucenika = new PopisPredmetnihUcenika(cmbPopis.SelectedItem.ToString(),comboBox1.SelectedItem.ToString(),txtImePrezime.Text);
+            PopisPredmetnihUcenika popispredmetnihucenika = new PopisPredmetnihUcenika(cmbPopis.SelectedItem.ToString(),cmbRazred.SelectedItem.ToString(),txtImePrezime.Text);
             this.Hide();
             popispredmetnihucenika.ShowDialog();
             this.Show();
@@ -99,7 +99,7 @@ namespace Forme
 
         private void cmbPopis_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBox1.Items.Clear();
+            cmbRazred.Items.Clear();
             string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE \"naziv_predmeta\"='" + cmbPopis.Text + "'; ";
             string id_predmet="";
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
@@ -123,11 +123,11 @@ namespace Forme
                 citac = BazaPodataka.Instance.DohvatiDataReader(sql);
                 while (citac.Read())
                 {
-                    comboBox1.Items.Add(citac["naziv_razreda"].ToString());
+                    cmbRazred.Items.Add(citac["naziv_razreda"].ToString());
                 }
                 citac.Close();
             }
-            comboBox1.SelectedIndex = 0;
+            cmbRazred.SelectedIndex = 0;
         }
     }
 }

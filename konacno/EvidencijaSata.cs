@@ -38,10 +38,42 @@ namespace Forme
 
             id_predmeta2 = id_predmeta;
             citac.Close();
-            DohvatiStudentePredmeta(ref sql,ref citac,id_predmeta);
+
+            string id_razred = "";
+            sql = "SELECT \"ID_razred\" FROM \"Razred\" WHERE \"naziv_razreda\"='" + razred + "';";
+            citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+            while (citac.Read())
+            {
+                id_razred = citac["ID_razred"].ToString();
+            }
+
+            sql = "SELECT \"Pohada\".\"ID_korisnik\" FROM \"Pohada\" WHERE \"Pohada\".\"ID_predmet\"='" + id_predmeta + "';";
+            //  AND \"ucenik_pohada_razred\".\"ID_razred\"='"+id_razred+"' AND \ucenik_pohada_razred\".\"ID_predmet\"='"+id_predmeta+"';";
+            citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+
+            List<string> idjevi = new List<string>();
+            List<string> idjevi2 = new List<string>();
+
+            while (citac.Read())
+            {
+                idjevi2.Add(citac["ID_korisnik"].ToString());
+
+            }
+            citac.Close();
+            foreach (string id2 in idjevi2)
+            {
+                sql = "SELECT \"ID_korisnik\" FROM \"ucenik_pohada_razred\" WHERE \"ID_korisnik\"='" + id2 + "' AND \"ID_razred\"='" + id_razred + "';";
+                citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                while (citac.Read())
+                {
+                    idjevi.Add(citac["ID_korisnik"].ToString());
+                }
+                citac.Close();
+            }
+            DohvatiStudentePredmeta(ref sql,ref citac,id_predmeta,idjevi);
         }
 
-        public EvidencijaSata(string imePredmeta)
+        public EvidencijaSata(string imePredmeta,string razred)
         {
             InitializeComponent();
             this.CenterToParent();
@@ -49,29 +81,58 @@ namespace Forme
             //MessageBox.Show(ime_predmeta);
             lblDatum.Text= DateTime.Today.ToShortDateString();
             string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE naziv_predmeta='" + ime_predmeta + "';";
+
+            //////////////////////////////////////////////////////////////
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
-            string id_predmeta= "";
-            while(citac.Read())
+            string id_predmeta = "";
+            while (citac.Read())
             {
-                id_predmeta= citac["ID_predmet"].ToString();
+                id_predmeta = citac["ID_predmet"].ToString();
                 id_predmeta2 = id_predmeta;
             }
             citac.Close();
-            DohvatiStudentePredmeta(ref sql, ref citac, id_predmeta);
-                
-         }
-
-        private void DohvatiStudentePredmeta(ref string sql, ref NpgsqlDataReader citac, string id_predmeta)
-        {
-            sql = "SELECT \"ID_korisnik\" FROM \"Pohada\" WHERE \"ID_predmet\"='" + id_predmeta + "';";
-            List<string> lista_idjeva = new List<string>();
+       
+            string id_razred = "";
+            sql = "SELECT \"ID_razred\" FROM \"Razred\" WHERE \"naziv_razreda\"='" + razred + "';";
             citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             while (citac.Read())
             {
-                lista_idjeva.Add(citac["ID_korisnik"].ToString());
+                id_razred = citac["ID_razred"].ToString();
+            }
+
+            sql = "SELECT \"Pohada\".\"ID_korisnik\" FROM \"Pohada\" WHERE \"Pohada\".\"ID_predmet\"='" + id_predmeta + "';";
+            //  AND \"ucenik_pohada_razred\".\"ID_razred\"='"+id_razred+"' AND \ucenik_pohada_razred\".\"ID_predmet\"='"+id_predmeta+"';";
+            citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+
+            List<string> idjevi = new List<string>();
+            List<string> idjevi2 = new List<string>();
+
+            while (citac.Read())
+            {
+                idjevi2.Add(citac["ID_korisnik"].ToString());
 
             }
             citac.Close();
+            foreach (string id in idjevi2)
+            {
+                sql = "SELECT \"ID_korisnik\" FROM \"ucenik_pohada_razred\" WHERE \"ID_korisnik\"='" + id + "' AND \"ID_razred\"='" + id_razred + "';";
+                citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                while (citac.Read())
+                {
+                    idjevi.Add(citac["ID_korisnik"].ToString());
+                }
+                citac.Close();
+            }
+            //////////////////////////////////////////////////////////////
+           
+            DohvatiStudentePredmeta(ref sql, ref citac, id_predmeta,idjevi);
+                
+         }
+
+        private void DohvatiStudentePredmeta(ref string sql, ref NpgsqlDataReader citac, string id_predmeta,List<string> lista_idjeva)
+        {
+
+
             foreach (string tekst in lista_idjeva)
             {
                 sql = "SELECT ime, prezime FROM \"Korisnik\" WHERE \"ID_korisnik\"='" + tekst + "';";
@@ -103,19 +164,19 @@ namespace Forme
 
             Regex regex = new Regex(@"^[0-9]+$");
 
-            if (regex.IsMatch(textBox1.Text))
+            if (regex.IsMatch(txtRedni_broj_sata.Text))
             {
 
             }
             else 
             {
-                textBox1.Text = "";
+                txtRedni_broj_sata.Text = "";
                 MessageBox.Show("U redni broj sata mozete unijeti samo brojeve!");
             }
-            if (textBox1.Text == "") { }
+            if (txtRedni_broj_sata.Text == "") { }
             else
             {
-                string sql = "INSERT INTO \"Evidencija\"(\"ID_korisnik\",redni_broj_sata,tema) VALUES ( '" + FrmPrijava.Id_korisnika + "','" + textBox1.Text + "','" + textBox2.Text+"');";
+                string sql = "INSERT INTO \"Evidencija\"(\"ID_korisnik\",redni_broj_sata,tema) VALUES ( '" + FrmPrijava.Id_korisnika + "','" + txtRedni_broj_sata.Text + "','" + txtTema.Text+"');";
                 BazaPodataka.Instance.IzvrsiUpit(sql);
                 foreach(string stavka in cmbIzostali.Items)
                 {
