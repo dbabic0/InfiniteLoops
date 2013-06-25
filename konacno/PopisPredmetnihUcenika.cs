@@ -179,7 +179,7 @@ namespace Forme
                 //,date_part('month',datum),date_part('year',datum)
 
                 sql = "SELECT \"OIB\", ime,prezime,datum_rodenja::varchar(10) FROM \"Korisnik\", \"Ocjena\" WHERE \"Korisnik\".\"ID_korisnik\"='" + id + "' ";
-                sql += "AND \"Ocjena\".\"ID_korisnik\"='" + id + "' AND date_part('month',datum)='" + mjesec + "' AND date_part('year',datum)='" + godina + "' AND Usmeno IS NOT NULL AND \"ID_predmet\"='"+id_predmeta+"'; ";
+                sql += "AND \"Ocjena\".\"ID_korisnik\"='" + id + "' AND date_part('month',datum)='" + mjesec + "' AND date_part('year',datum)='" + godina + "' AND tip='2' AND \"ID_predmet\"='"+id_predmeta+"'; ";
 
 
                 citac = BazaPodataka.Instance.DohvatiDataReader(sql);
@@ -313,7 +313,7 @@ namespace Forme
                     id = dataGridView1.Rows[selektirani].Cells[4].Value.ToString();
 
                     this.Hide();
-                    Predmet profil = new Predmet(id, prezime, ime, oib, datum);
+                    Predmet profil = new Predmet(id, prezime, ime, oib, datum,1);
                     profil.ShowDialog();
                     this.Show();
                     

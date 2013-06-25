@@ -19,7 +19,14 @@ namespace Forme
         private static string ime;
         private static string prezime;
         private static string id_korisnika;
-
+        private static string tip_korisnika;
+        private static string OIB;
+        private static string Datum;
+        public static string Tip_korisnika
+        {
+            get { return tip_korisnika; }
+            private set { tip_korisnika = value; }
+        }
         public static string Id_korisnika
         {
             get { return id_korisnika;}
@@ -76,7 +83,7 @@ namespace Forme
             }
             else
             {
-                string sql = "SELECT \"ID_korisnik\",korisnicko_ime,lozinka,ime,prezime FROM \"Korisnik\" WHERE korisnicko_ime='" + txtKorIme.Text + "' AND lozinka='" + txtLozinka.Text + "';";
+                string sql = "SELECT \"ID_korisnik\",korisnicko_ime,lozinka,ime,prezime,tip_korisnika,\"OIB\",datum_rodenja::VARCHAR(10) FROM \"Korisnik\" WHERE korisnicko_ime='" + txtKorIme.Text + "' AND lozinka='" + txtLozinka.Text + "';";
                 NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
                 if (citac.HasRows)
                 {
@@ -91,12 +98,22 @@ namespace Forme
                         Ime = citac["ime"].ToString();
                         Prezime = citac["prezime"].ToString();
                         Id_korisnika = citac["ID_korisnik"].ToString();
+                        Tip_korisnika = citac["tip_korisnika"].ToString();
+                        OIB=citac["OIB"].ToString();
+                        Datum=citac["datum_rodenja"].ToString();
                     }
                     this.Hide();
                     citac.Close();
-
-                    OdabirUloge odabiruloge = new OdabirUloge();
-                    odabiruloge.ShowDialog();
+                    if (string.Compare(Tip_korisnika, "1") == 0)
+                    {
+                        OdabirUloge odabiruloge = new OdabirUloge();
+                        odabiruloge.ShowDialog();
+                    }
+                    else
+                    {
+                        Predmet predmet = new Predmet(id_korisnika, prezime, ime, OIB, Datum, 2);
+                        predmet.ShowDialog();
+                    }
                     this.Close();
                 }
                 else

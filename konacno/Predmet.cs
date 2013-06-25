@@ -16,7 +16,9 @@ namespace Forme
         private string id;
         private string predmet_id;
         public bool profesor_razrednik;
+        private int tip;
 
+        
         private string Predmet_id
         {
             get
@@ -43,10 +45,11 @@ namespace Forme
             }
         }
 
-        public Predmet(string id, string prezime, string ime, string oib, string datum)
+        public Predmet(string id, string prezime, string ime, string oib, string datum,int tip)
         {
             InitializeComponent();
             this.CenterToParent();
+            this.tip = tip;
             txtImePrezimeUcenika.Text = ime + " " + prezime;
             txtDatumRodenja.Text = datum;
             txtOIB.Text = oib;
@@ -75,6 +78,10 @@ namespace Forme
 
                 }
                 citac.Close();
+            }
+            if (tip == 2)
+            {
+                btnPotvrdiZakljucnu.Enabled = false;
             }
        }
 
@@ -113,7 +120,7 @@ namespace Forme
             dataGridView1.Rows[1].Cells[0].Value = "Usmeni";
             dataGridView1.Rows[2].Cells[0].Value = "Aktivnost";
             dataGridView1.Rows[3].Cells[0].Value = "Domaća zadaća";
-            string sql = "SELECT date_part('month',datum), date_part('year',datum), pismeno, usmeno, aktivnost, domaca_zadaca FROM \"Ocjena\" WHERE \"ID_korisnik\"='" + Id + "' AND \"ID_predmet\"='"+Predmet_id+"';";
+            string sql = "SELECT date_part('month',datum), date_part('year',datum),tip,ocjena FROM \"Ocjena\" WHERE \"ID_korisnik\"='" + Id + "' AND \"ID_predmet\"='"+Predmet_id+"';";
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             string mjesec = DateTime.Now.Month.ToString();
             
@@ -138,13 +145,11 @@ namespace Forme
 
                 string ocjena;
 
-
-                    if (string.Compare(citac["pismeno"].ToString(), "") == 0) { }
-                    else
-                    {
-                        dataGridView1.Rows[0].Cells[mj].Value = citac["pismeno"].ToString();
+              //  MessageBox.Show(citac["tip"].ToString());
+                    if (string.Compare(citac["tip"].ToString(), "1") == 0) { 
+                        dataGridView1.Rows[0].Cells[mj].Value = citac["ocjena"].ToString();
                         ukupno_ocjena++;
-                        ocjena = citac["pismeno"].ToString();
+                        ocjena = citac["ocjena"].ToString();
                         if (ocjena[0] == '-')
                         {
                             zbroj_ocjena += float.Parse(ocjena[1].ToString()) - 0.25;
@@ -158,12 +163,10 @@ namespace Forme
                             zbroj_ocjena += float.Parse(ocjena);
                         }
                     }
-                    if (string.Compare(citac["usmeno"].ToString(), "") == 0) { }
-                    else
-                    {
-                        dataGridView1.Rows[1].Cells[mj].Value = citac["usmeno"].ToString();
+                    if (string.Compare(citac["tip"].ToString(), "2") == 0) { 
+                        dataGridView1.Rows[1].Cells[mj].Value = citac["ocjena"].ToString();
                         ukupno_ocjena++;
-                        ocjena = citac["usmeno"].ToString();
+                        ocjena = citac["ocjena"].ToString();
                         if (ocjena[0] == '-')
                         {
                             zbroj_ocjena += float.Parse(ocjena[1].ToString()) - 0.25;
@@ -177,12 +180,10 @@ namespace Forme
                             zbroj_ocjena += float.Parse(ocjena);
                         }
                     }
-                    if (string.Compare(citac["aktivnost"].ToString(), "") == 0) { }
-                    else
-                    {
-                        dataGridView1.Rows[2].Cells[mj].Value = citac["aktivnost"].ToString();
+                    if (string.Compare(citac["tip"].ToString(), "3") == 0) { 
+                        dataGridView1.Rows[2].Cells[mj].Value = citac["ocjena"].ToString();
                         ukupno_ocjena++;
-                        ocjena = citac["aktivnost"].ToString();
+                        ocjena = citac["ocjena"].ToString();
                         if (ocjena[0] == '-')
                         {
                             zbroj_ocjena += float.Parse(ocjena[1].ToString()) - 0.25;
@@ -196,12 +197,10 @@ namespace Forme
                             zbroj_ocjena += float.Parse(ocjena);
                         }
                     }
-                    if (string.Compare(citac["domaca_zadaca"].ToString(), "") == 0) { }
-                    else
-                    {
-                        dataGridView1.Rows[3].Cells[mj].Value = citac["domaca_zadaca"].ToString();
+                    if (string.Compare(citac["tip"].ToString(), "4") == 0) { 
+                        dataGridView1.Rows[3].Cells[mj].Value = citac["ocjena"].ToString();
                         ukupno_ocjena++;
-                        ocjena = citac["domaca_zadaca"].ToString();
+                        ocjena = citac["ocjena"].ToString();
                         if (ocjena[0] == '-')
                         {
                             zbroj_ocjena += float.Parse(ocjena[1].ToString()) - 0.25;
@@ -215,8 +214,6 @@ namespace Forme
                             zbroj_ocjena += float.Parse(ocjena);
                         }
                     }
-
-               
             }
             citac.Close();
             if (ukupno_ocjena == 0) { }
@@ -286,62 +283,66 @@ namespace Forme
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            string mjesec = DateTime.Now.Month.ToString();
-            mjesec += ".";
-            int odabrani_stupac = dataGridView1.CurrentCell.ColumnIndex;
-            int odabrani_redak = dataGridView1.CurrentRow.Index;
-            if (dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value!=null)
+            if (tip == 2)
             {
-                MessageBox.Show("Ne mogu mijenjati već unesenu ocjenu!");
             }
-            else if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec || profesor_razrednik==true)
-            {
-                Ocjena ocjena;
-                try
-                {
-                    if (profesor_razrednik == false)
-                    {
-                        ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), DateTime.Now.Month.ToString(), odabrani_redak,false);
-                    }
-                    else 
-                    {
-
-                        string poslani_mjesec = "";
-                        if (odabrani_stupac >= 5) poslani_mjesec = (odabrani_stupac - 4).ToString();
-                        else poslani_mjesec = (odabrani_stupac + 8).ToString();
-                        ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), poslani_mjesec, odabrani_redak, true);
-                    }
-                }
-
-                catch
-                {
-                    if (profesor_razrednik == false)
-                    {
-                        ocjena = new Ocjena(Id, predmet_id, "0", DateTime.Now.Month.ToString(), odabrani_redak,false);
-                    }
-                    else 
-                    {
-                        string poslani_mjesec = "";
-                        if (odabrani_stupac >= 5) poslani_mjesec = (odabrani_stupac - 4).ToString();
-                        else poslani_mjesec = (odabrani_stupac + 8).ToString();
-                        
-                        ocjena = new Ocjena(Id, predmet_id, "0", poslani_mjesec, odabrani_redak, true);
-                    }
-                }
-                this.Hide();
-                ocjena.ShowDialog();
-                dataGridView1.Columns.Clear();
-                dataGridView1.Rows.Clear();
-                Pokazi_ocjene();
-                this.Show();
-            }
-          
             else
-            
             {
-                MessageBox.Show("Ne mozete uredivati ocjene mjeseca razlicite od trenutnog!");
-            }
+                string mjesec = DateTime.Now.Month.ToString();
+                mjesec += ".";
+                int odabrani_stupac = dataGridView1.CurrentCell.ColumnIndex;
+                int odabrani_redak = dataGridView1.CurrentRow.Index;
+                if (dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value != null)
+                {
+                    MessageBox.Show("Ne mogu mijenjati već unesenu ocjenu!");
+                }
+                else if (dataGridView1.Columns[odabrani_stupac].HeaderText == mjesec || profesor_razrednik == true)
+                {
+                    Ocjena ocjena;
+                    try
+                    {
+                        if (profesor_razrednik == false)
+                        {
+                            ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), DateTime.Now.Month.ToString(), odabrani_redak, false);
+                        }
+                        else
+                        {
 
+                            string poslani_mjesec = "";
+                            if (odabrani_stupac >= 5) poslani_mjesec = (odabrani_stupac - 4).ToString();
+                            else poslani_mjesec = (odabrani_stupac + 8).ToString();
+                            ocjena = new Ocjena(Id, predmet_id, dataGridView1.Rows[odabrani_redak].Cells[odabrani_stupac].Value.ToString(), poslani_mjesec, odabrani_redak, true);
+                        }
+                    }
+
+                    catch
+                    {
+                        if (profesor_razrednik == false)
+                        {
+                            ocjena = new Ocjena(Id, predmet_id, "0", DateTime.Now.Month.ToString(), odabrani_redak, false);
+                        }
+                        else
+                        {
+                            string poslani_mjesec = "";
+                            if (odabrani_stupac >= 5) poslani_mjesec = (odabrani_stupac - 4).ToString();
+                            else poslani_mjesec = (odabrani_stupac + 8).ToString();
+
+                            ocjena = new Ocjena(Id, predmet_id, "0", poslani_mjesec, odabrani_redak, true);
+                        }
+                    }
+                    this.Hide();
+                    ocjena.ShowDialog();
+                    dataGridView1.Columns.Clear();
+                    dataGridView1.Rows.Clear();
+                    Pokazi_ocjene();
+                    this.Show();
+                }
+
+                else
+                {
+                    MessageBox.Show("Ne mozete uredivati ocjene mjeseca razlicite od trenutnog!");
+                }
+            }
         }
 
         private void Predmet_Load(object sender, EventArgs e)

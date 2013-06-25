@@ -55,13 +55,13 @@ namespace Forme
 
             }
             Id_korisnik=id_korisnika;
-            if (odabrani_redak == 0) Kategorija = "pismeno";
-            else if (odabrani_redak == 1) Kategorija = "usmeno";
-            else if (odabrani_redak == 2) Kategorija = "aktivnost";
-            else Kategorija = "domaca_zadaca";
+            if (odabrani_redak == 0) Kategorija = "1";
+            else if (odabrani_redak == 1) Kategorija = "2";
+            else if (odabrani_redak == 2) Kategorija = "3";
+            else Kategorija = "4";
 
             string sql = "SELECT napomena,datum FROM \"Ocjena\" WHERE \"ID_korisnik\"='" + id_korisnika + "' AND \"ID_predmet\"='" + id_predmeta + "'";
-            sql += " AND date_part('month',datum)='" + mjesec + "' AND " + Kategorija + " IS NOT NULL;";
+            sql += " AND date_part('month',datum)='" + mjesec + "' AND tip='" +kategorija+ "';";
 
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             while (citac.Read())
@@ -173,16 +173,16 @@ namespace Forme
                     {
                         if (Postojeca == false)
                         {
-                            string sql = "INSERT INTO \"Ocjena\" ( \"ID_predmet\", \"ID_korisnik\", datum, " + kategorija + ", napomena) VALUES";
-                            sql += "( '" + Id_predmeta + "','" + Id_korisnik + "','" + DateTime.Now.ToShortDateString() + "','" + cmbPredznak.Text + cmbOcjena.Text + "','" + txtNapomena.Text + "');";
+                            string sql = "INSERT INTO \"Ocjena\" ( \"ID_predmet\", \"ID_korisnik\", datum, tip,ocjena,napomena) VALUES";
+                            sql += "( '" + Id_predmeta + "','" + Id_korisnik + "','" + DateTime.Now.ToShortDateString() +"','"+kategorija+ "','" + cmbPredznak.Text + cmbOcjena.Text + "','" + txtNapomena.Text + "');";
                             BazaPodataka.Instance.IzvrsiUpit(sql);
 
                         }
                         else
                         {
-                            string sql = "UPDATE \"Ocjena\" SET " + kategorija + "='" + cmbPredznak.Text + cmbOcjena.Text + "', napomena='" + txtNapomena.Text + "'  WHERE ";
+                            string sql = "UPDATE \"Ocjena\" SET ocjena='" + cmbPredznak.Text + cmbOcjena.Text + "', napomena='" + txtNapomena.Text + "'  WHERE ";
                             sql += "\"ID_korisnik\"='" + Id_korisnik + "' AND \"ID_predmet\"='" + Id_predmeta + "'";
-                            sql += " AND date_part('month',datum)='" + DateTime.Now.Month.ToString() + "';";
+                            sql += " AND date_part('month',datum)='" + DateTime.Now.Month.ToString() + "' AND tip='"+kategorija+"';";
                             BazaPodataka.Instance.IzvrsiUpit(sql);
 
                         }
