@@ -45,6 +45,15 @@ namespace Forme
             }
         }
 
+        /// <summary>
+        /// ovu formu je pozvao razrednik
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="prezime"></param>
+        /// <param name="ime"></param>
+        /// <param name="oib"></param>
+        /// <param name="datum"></param>
+        /// <param name="tip"></param>
         public Predmet(string id, string prezime, string ime, string oib, string datum,int tip)
         {
             InitializeComponent();
@@ -85,10 +94,20 @@ namespace Forme
             }
        }
 
+        /// <summary>
+        /// Ovu formu je pozvao profesor
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="prezime"></param>
+        /// <param name="ime"></param>
+        /// <param name="oib"></param>
+        /// <param name="datum"></param>
+        /// <param name="predmet"></param>
         public Predmet(string id, string prezime, string ime, string oib, string datum, string predmet)
         {
             InitializeComponent();
             this.CenterToParent();
+            btnIzvjestaj.Visible = false;
             profesor_razrednik = false;
             txtImePrezimeUcenika.Text = ime + " " + prezime;
             txtDatumRodenja.Text = datum;
@@ -100,6 +119,9 @@ namespace Forme
             Pokazi_ocjene();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Pokazi_ocjene()
         {
             dodaj_stupac("");
@@ -249,6 +271,10 @@ namespace Forme
             }
         }
 
+        /// <summary>
+        /// Dodaj jedan stupac ručno u datagrid
+        /// </summary>
+        /// <param name="ime_stupca"></param>
         public void dodaj_stupac(string ime_stupca)
         {
             DataGridViewColumn stupac = new DataGridViewTextBoxColumn();
@@ -261,6 +287,11 @@ namespace Forme
             this.Close();
         }
 
+        /// <summary>
+        /// unesi zaključnu ocjenu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult di = MessageBox.Show("Jeste li sigurni da želite unijeti zaključnu ocjenu?", "Zaključna ocjena",MessageBoxButtons.YesNo);
@@ -281,6 +312,16 @@ namespace Forme
             }
         }
 
+        /// <summary>
+        /// ako se klikne na neku ocjenu, prvo provjeri da li smiješ kliknuti na tu ocjenu,
+        /// ako si profesor, onda smiješ kliknuti samo na one s tekućim
+        /// mjesecom, a ako si razrednik
+        /// onda smiješ kliknuti na sve mjesece
+        /// a možeš miijenjati samo onu koja nije upisana
+        /// za trenutni mjesec
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_Click(object sender, EventArgs e)
         {
             if (tip == 2)
@@ -345,11 +386,12 @@ namespace Forme
             }
         }
 
-        private void Predmet_Load(object sender, EventArgs e)
-        {
 
-        }
-
+        /// <summary>
+        /// Ako se promijeni naziv predmeta onda ponovo selektiraj ocjene za novi selektirani predmet
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbPopis_predmeta.Text == "") { }
@@ -371,26 +413,11 @@ namespace Forme
 
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// ako se klikne na izostanke otvori formu s izostancima
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             //tectbox3
@@ -409,5 +436,10 @@ namespace Forme
             }
         }
 
+        private void btnIzvjestaj_Click(object sender, EventArgs e)
+        {
+            Izvjestaj izvjestaj = new Izvjestaj(id);
+            izvjestaj.ShowDialog();
+        }
     }
 }

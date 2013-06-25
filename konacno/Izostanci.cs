@@ -13,6 +13,12 @@ namespace Forme
 {
     public partial class Izostanci : Form
     {
+
+        /// <summary>
+        /// Selektiraj izostanke učenika s odabranim OIB-om na odabranom predmetu
+        /// </summary>
+        /// <param name="OIB"></param>
+        /// <param name="predmet"></param>
         public Izostanci(string OIB, string predmet)
         {
             InitializeComponent();

@@ -85,7 +85,7 @@
             this.txtImePrezime.ReadOnly = true;
             this.txtImePrezime.Size = new System.Drawing.Size(159, 20);
             this.txtImePrezime.TabIndex = 4;
-            this.txtImePrezime.TextChanged += new System.EventHandler(this.txtImePrezime_TextChanged);
+
             // 
             // dateTimePicker1
             // 
@@ -112,7 +112,7 @@
             this.cmbPredmeti.Name = "cmbPredmeti";
             this.cmbPredmeti.Size = new System.Drawing.Size(121, 21);
             this.cmbPredmeti.TabIndex = 7;
-            this.cmbPredmeti.SelectedIndexChanged += new System.EventHandler(this.cmbPredmet_SelectedIndexChanged);
+
             // 
             // label3
             // 

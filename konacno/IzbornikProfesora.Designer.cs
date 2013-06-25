@@ -78,7 +78,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+
             // 
             // label2
             // 
@@ -97,7 +97,7 @@
             this.txtImePrezime.ReadOnly = true;
             this.txtImePrezime.Size = new System.Drawing.Size(135, 20);
             this.txtImePrezime.TabIndex = 5;
-            this.txtImePrezime.TextChanged += new System.EventHandler(this.txtImePrezime_TextChanged);
+
             // 
             // cmbPopis
             // 
@@ -127,7 +127,7 @@
             this.cmbRazred.Name = "cmbRazred";
             this.cmbRazred.Size = new System.Drawing.Size(121, 21);
             this.cmbRazred.TabIndex = 8;
-            this.cmbRazred.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+
             // 
             // label3
             // 

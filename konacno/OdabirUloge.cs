@@ -32,6 +32,12 @@ namespace Forme
             this.Close();
         }
 
+
+        /// <summary>
+        /// odabir uloge razrednika
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRazrednik_Click(object sender, EventArgs e)
         {
             IzbornikRazrednika izbornikrazrednika = new IzbornikRazrednika();
@@ -40,6 +46,11 @@ namespace Forme
             this.Close();
         }
 
+        /// <summary>
+        /// odabir uloge profesora
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnProfesor_Click(object sender, EventArgs e)
         {
             IzbornikProfesora izbornikprofesora = new IzbornikProfesora();

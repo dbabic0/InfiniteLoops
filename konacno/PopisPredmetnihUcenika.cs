@@ -19,7 +19,12 @@ namespace Forme
         private bool profesor_razrednik;
         private string razred;
 
-       
+       /// <summary>
+       /// Pozovi funkciju koja dohvaca ucenike
+       /// </summary>
+       /// <param name="predmet"></param>
+       /// <param name="razred"></param>
+       /// <param name="imeprofesora"></param>
         public PopisPredmetnihUcenika(string predmet,string razred,string imeprofesora)
         {
             InitializeComponent();
@@ -37,6 +42,14 @@ namespace Forme
 
         }
 
+        /// <summary>
+        /// Dohvati ucenike koji pripadaju tom predmetu i razredu ( lista_Idjeva)
+        /// Zatim provjeri njihove ocjene za tekući mjesec i ako imaju ocjenu onda
+        /// ih zacrveni 
+        /// </summary>
+        /// <param name="lista_idjeva"></param>
+        /// <param name="imeprofesora"></param>
+        /// <param name="razred"></param>
         public PopisPredmetnihUcenika(List<string> lista_idjeva, string imeprofesora, string razred)
         {
             InitializeComponent();
@@ -95,10 +108,11 @@ namespace Forme
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-
         }
 
+        /// <summary>
+        /// Dohvati sve učenike na tom predmetu u tom razredu
+        /// </summary>
         private void DohvatiUcenike()
         {
        
@@ -227,21 +241,16 @@ namespace Forme
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Generiraj random broj koji dohvaća jednog učenika iz datagrida i ispituje ga
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             bool ponovno_generiraj = false;
@@ -270,6 +279,11 @@ namespace Forme
             UpaliFormuPredmet(ispitani);
         }
 
+        /// <summary>
+        /// Otvori novu formu s ocjenama
+        /// i pošalji joj podatke o učeniku i id predmeta 
+        /// </summary>
+        /// <param name="ispitani"></param>
         private void UpaliFormuPredmet(int ispitani)
         {
             string ime, prezime, datum, oib, id;
@@ -289,6 +303,12 @@ namespace Forme
             DohvatiUcenike();
         }
 
+        /// <summary>
+        /// ako se klikne na nekog učenika u datagridu, selektiraj tog odabranog učenika
+        /// i otvori formu s ocjenama
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_Click(object sender, EventArgs e)
         {
             if (profesor_razrednik == false)
@@ -321,11 +341,6 @@ namespace Forme
                 }
 
             }
-        }
-
-        private void PopisPredmetnihUcenika_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

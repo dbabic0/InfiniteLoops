@@ -13,6 +13,11 @@ namespace Forme
 {
     public partial class IzbornikRazrednika : Form
     {
+
+        /// <summary>
+        /// Selektiraj prvo razred kojemo je korisnik razrednik
+        /// 
+        /// </summary>
         public IzbornikRazrednika()
         {
             InitializeComponent();
@@ -21,13 +26,11 @@ namespace Forme
             NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
             try
             {
-
                 while (citac.Read())
                 {
                     cmbPredmeti.Items.Add(citac["naziv_razreda"].ToString());
                 }
                 cmbPredmeti.SelectedIndex = 0;
-
             }
 
             catch
@@ -35,25 +38,28 @@ namespace Forme
                 MessageBox.Show("Niste nikome razrednik!");
             }
             citac.Close();
-
-     
             txtImePrezime.Text = FrmPrijava.Ime + " " + FrmPrijava.Prezime;
         }
 
-        private void cmbPredmet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Vrati se nazad na odabir uloge
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             OdabirUloge odabiruloge = new OdabirUloge();
             this.Hide();
             odabiruloge.ShowDialog();
             this.Close();
-
         }
 
+        /// <summary>
+        /// Otvori formu evidencija sata i njoj pošalji za koji razred se radi evidencija sata i true
+        /// zato jer ako je true onda se radi o razredniku
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEvidencijaSata_Click(object sender, EventArgs e)
         {
             EvidencijaSata evidencijasata = new EvidencijaSata(cmbPredmeti.Text, true);
@@ -62,6 +68,16 @@ namespace Forme
             this.Show();
         }
 
+
+        /// <summary>
+        /// Ako se klikne na popis predmetnih učenika,
+        /// Prvo selektiraj sve korisnike koji pripadaju tom razredu
+        /// Dohvati ih u listu
+        /// I onda pozovi formu popis predmetnih učenika i njoj proslijedi listu učenika
+        /// na tom predmetu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPopisUcenika_Click(object sender, EventArgs e)
         {
             string sql = "SELECT \"ID_razred\" FROM \"Razred\" WHERE naziv_razreda='" + cmbPredmeti.Text + "';";
@@ -85,11 +101,6 @@ namespace Forme
             this.Hide();
             popis.ShowDialog();
             this.Show();
-        }
-
-        private void txtImePrezime_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

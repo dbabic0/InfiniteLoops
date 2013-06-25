@@ -69,12 +69,6 @@
     <Compile Include="Pocetna.Designer.cs">
       <DependentUpon>Pocetna.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unos ocjene.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Unos ocjene.Designer.cs">
-      <DependentUpon>Unos ocjene.cs</DependentUpon>
-    </Compile>
     <Compile Include="Predmet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,12 +93,6 @@
     <Compile Include="PopisPredmetnihUcenika.Designer.cs">
       <DependentUpon>PopisPredmetnihUcenika.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopisUcenika.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PopisUcenika.Designer.cs">
-      <DependentUpon>PopisUcenika.cs</DependentUpon>
-    </Compile>
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +110,6 @@
     </Compile>
     <Compile Include="IzbornikRazrednika.Designer.cs">
       <DependentUpon>IzbornikRazrednika.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProfilUcenika.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProfilUcenika.Designer.cs">
-      <DependentUpon>ProfilUcenika.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,17 +137,11 @@
     <EmbeddedResource Include="PopisPredmetnihUcenika.resx">
       <DependentUpon>PopisPredmetnihUcenika.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopisUcenika.resx">
-      <DependentUpon>PopisUcenika.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OdabirUloge.resx">
       <DependentUpon>OdabirUloge.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProfilUcenika.resx">
-      <DependentUpon>ProfilUcenika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -176,9 +152,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Unos ocjene.resx">
-      <DependentUpon>Unos ocjene.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -97,12 +97,9 @@ C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.IzbornikProf
 C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.IzbornikRazrednika.resources
 C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.Ocjena.resources
 C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.PopisPredmetnihUcenika.resources
-C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.PopisUcenika.resources
 C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.FrmPrijava.resources
 C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.OdabirUloge.resources
-C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.ProfilUcenika.resources
 C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.Properties.Resources.resources
-C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.Form1.resources
 C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.csproj.GenerateResource.Cache
 C:\Users\Nikolina\Documents\GitHub\InfiniteLoops\konacno\bin\Debug\Forme.exe.config
 C:\Users\Nikolina\Documents\GitHub\InfiniteLoops\konacno\obj\Debug\Forme.exe

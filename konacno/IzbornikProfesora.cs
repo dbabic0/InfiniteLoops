@@ -13,6 +13,9 @@ namespace Forme
 {
     public partial class IzbornikProfesora : Form
     {
+        /// <summary>
+        /// Dohvatimo sve predmete koje profesor predmete i razrede u kojima je taj predmet
+        /// </summary>
         public IzbornikProfesora()
         {
             InitializeComponent();
@@ -40,13 +43,16 @@ namespace Forme
             }
 
             cmbPopis.SelectedIndex = 0;
-         
-
-
-
             txtImePrezime.Text = FrmPrijava.Ime + " " + FrmPrijava.Prezime;
         }
 
+
+        /// <summary>
+        /// ako se klikne evidencija sata poziva se forma evidencija sata i njoj 
+        /// se šalje koji predmet je odabran i koji razred
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             if (cmbPopis.Text == "")
@@ -60,11 +66,14 @@ namespace Forme
                 this.Hide();
                 evidencijasata.ShowDialog();
                 this.Show();
-
-
             }
         }
 
+        /// <summary>
+        /// vrati se nazad na odabir uloge
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             OdabirUloge odabiruloge = new OdabirUloge();
@@ -73,30 +82,25 @@ namespace Forme
             this.Close();
         }
 
+        /// <summary>
+        /// Ako se odabere gumb popis predmetnih učenika otvori se forma s popisom učenika za taj predmet i taj razred
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             PopisPredmetnihUcenika popispredmetnihucenika = new PopisPredmetnihUcenika(cmbPopis.SelectedItem.ToString(),cmbRazred.SelectedItem.ToString(),txtImePrezime.Text);
             this.Hide();
             popispredmetnihucenika.ShowDialog();
             this.Show();
-
         }
 
-        private void txtImePrezime_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
-
+        /// <summary>
+        /// U slučaju da smo promijenili predmet u combo boxu, ponovo moramo selektirati
+        /// Razrede koji pripadaju tom predmetu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbPopis_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbRazred.Items.Clear();

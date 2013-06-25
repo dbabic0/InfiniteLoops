@@ -101,7 +101,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Spremi";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnEvidentiraj_Click);
             // 
             // lblDatum
             // 
@@ -111,7 +111,6 @@
             this.lblDatum.Size = new System.Drawing.Size(35, 13);
             this.lblDatum.TabIndex = 10;
             this.lblDatum.Text = "label5";
-            this.lblDatum.Click += new System.EventHandler(this.label5_Click);
             // 
             // cmbPrisutni
             // 
@@ -139,7 +138,6 @@
             this.lblSvi.Size = new System.Drawing.Size(159, 13);
             this.lblSvi.TabIndex = 13;
             this.lblSvi.Text = "Popis ucenika koji su na nastavi";
-            this.lblSvi.Click += new System.EventHandler(this.lblSvi_Click);
             // 
             // lblIzostali
             // 
@@ -226,7 +224,6 @@
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 19;
             this.label4.Text = "Izostali";
-            this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // label5
             // 
@@ -252,7 +249,6 @@
             this.Name = "EvidencijaSata";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Evidencija sata";
-            this.Load += new System.EventHandler(this.EvidencijaSata_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

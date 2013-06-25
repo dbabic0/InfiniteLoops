@@ -39,6 +39,20 @@ namespace Forme
             set { postojeca = value; }
         }
 
+
+        /// <summary>
+        /// Dohvati ocjenu za korisnika za odabrani mjesec,
+        /// Ako već postoji ocjena onda je selektiraj u one kontrole
+        /// </summary>
+        /// <param name="id_korisnika"></param>
+        /// <param name="id_predmeta"></param>
+        /// <param name="ocjena"></param>
+        /// <param name="mjesec"></param>
+        /// <param name="odabrani_redak"></param>
+        /// <param name="profesor_razrednik">
+        /// Ovaj parametar ako je true radi se o razredniku i on ne smije mijennjati ocjene
+        /// ako je false onda je profesor i smije mijenjati ocjene
+        /// </param>
         public Ocjena(string id_korisnika,string id_predmeta,string ocjena,string mjesec,int odabrani_redak, bool profesor_razrednik)
         {
             InitializeComponent();
@@ -153,6 +167,12 @@ namespace Forme
 
         }
 
+        /// <summary>
+        /// Upiši ocjenu, prvo provjeri ako se radi o razredniku , onda samo izađi bez da upišeš išta
+        /// Ako se radi o profesoru upiši koji je tip ocjene i koja je ocjena i napomena
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (profesor_razrednik == false)
@@ -201,7 +221,6 @@ namespace Forme
 
                 this.Close();
             }
-
         }
     }
 }
