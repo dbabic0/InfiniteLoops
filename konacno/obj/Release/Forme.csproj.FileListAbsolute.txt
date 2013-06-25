@@ -1,0 +1,17 @@
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\bin\Release\Forme.exe.config
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\bin\Release\Forme.exe
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\bin\Release\Mono.Security.dll
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\bin\Release\Npgsql.dll
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.EvidencijaSata.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.Izostanci.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.Pocetna.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.Predmet.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.IzbornikProfesora.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.IzbornikRazrednika.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.Ocjena.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.PopisPredmetnihUcenika.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.FrmPrijava.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.OdabirUloge.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.Properties.Resources.resources
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.csproj.GenerateResource.Cache
+C:\Users\Iva\Documents\GitHub\InfiniteLoops\konacno\obj\Release\Forme.exe
