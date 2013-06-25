@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.IO;
 
 namespace Forme
 {
@@ -92,7 +93,15 @@ namespace Forme
             {
                 btnPotvrdiZakljucnu.Enabled = false;
             }
-       }
+            try
+            {
+                cmbPopis_predmeta.SelectedIndex = 0;
+            }
+            catch
+            {
+
+            }
+            }
 
         /// <summary>
         /// Ovu formu je pozvao profesor
@@ -436,10 +445,93 @@ namespace Forme
             }
         }
 
+        /// <summary>
+        /// selektiraj sve iz comboboxa predmete i za svaki predmet ponovo prikazi ocjene i na kraju spremi sve u word
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnIzvjestaj_Click(object sender, EventArgs e)
         {
-            Izvjestaj izvjestaj = new Izvjestaj(id);
-            izvjestaj.ShowDialog();
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "Word Documents (*.doc)|*.doc";
+            sfd.FileName = "Izvještaj" + id.ToString() + ".doc";
+            string stOutput = "";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+            foreach (string predmet in cmbPopis_predmeta.Items)
+            {
+                string sql = "SELECT \"ID_predmet\" FROM \"Predmeti\" WHERE naziv_predmeta= '" + cmbPopis_predmeta.Text + "';";
+                NpgsqlDataReader citac = BazaPodataka.Instance.DohvatiDataReader(sql);
+                while (citac.Read())
+                {
+                    Predmet_id = citac["ID_predmet"].ToString();
+                }
+                dataGridView1.Rows.Clear();
+                dataGridView1.Columns.Clear();
+                Pokazi_ocjene();
+
+                stOutput += "\n-------------------------------\n";
+                stOutput += "Predmet: " + predmet + "\n";
+                stOutput += "=============================== \n\n";
+
+ 
+                    // Export titles:
+                    string sHeaders = "";
+
+                    for (int j = 1; j < dataGridView1.Columns.Count; j++)
+                    {
+                        stOutput+= "Mjesec: "+sHeaders.ToString() + Convert.ToString(dataGridView1.Columns[j].HeaderText) + "\n";
+                        try
+                        {
+                            stOutput += "Pismeno: " + dataGridView1.Rows[0].Cells[j].Value.ToString() + "\t";
+                        }
+                        catch
+                        {
+                            stOutput += "Pismeno: -\t";
+                        }
+                        try
+                        {
+                            stOutput += "Usmeno: " + dataGridView1.Rows[1].Cells[j].Value.ToString() + "\t";
+                        }
+                        catch
+                        {
+                            stOutput += "Usmeno: -\t";
+                        }
+                        try
+                        {
+                            stOutput += "Aktivnost: " + dataGridView1.Rows[2].Cells[j].Value.ToString() + "\t";
+                        }
+                        catch
+                        {
+                            stOutput += "Aktivnost: -\t";
+                        }
+                        try
+                        {
+                            stOutput += "Domaća zadaća: " + dataGridView1.Rows[3].Cells[j].Value.ToString() + "\t";
+                        }
+                        catch
+                        {
+                            stOutput += "Domaća zadaća: -\t";
+                        }
+                        stOutput += "\n\n";
+                    } 
+                    // Export data.
+
+                }
+                Encoding utf16 = Encoding.GetEncoding(1254);
+                UTF8Encoding utf8 = new UTF8Encoding();
+                byte[] output = utf8.GetBytes(stOutput);
+                FileStream fs = new FileStream(sfd.FileName, FileMode.Create);
+                BinaryWriter bw = new BinaryWriter(fs);
+                bw.Write(output, 0, output.Length); //write the encoded file
+                bw.Flush();
+                bw.Close();
+                fs.Close();
+                MessageBox.Show("Uspješno napravljen izvještaj");
+            }
+            //Izvjestaj izvjestaj = new Izvjestaj(id);
+            //izvjestaj.ShowDialog();
         }
     }
 }
